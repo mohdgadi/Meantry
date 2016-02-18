@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+      <!-- Meetups View -->
+      <div class="container" >
+      	<label for="singleSelect"> Select Date </label><br>
+    		<select nAMe="singleSelect" ng-model="dateSelect">
+    			<option value="2/01/2015">2nd Jan</option>
+      			<option value="3/01/2015">3rd Jan</option>
+
+ 			</select><br>
+   			 Selected date = {{dateSelect}}
+   			 <br/><br/><br/>
+
+
+      	<label for="singleSelect"> Select time </label><br>
+    		<select nAMe="singleSelect" ng-model="timeSelect">
+     			 <option value="9/10">9AM-10AM</option>
+      			<option value="10/11">10AM-11AM</option>
+      			<option value="11/12">11AM-12PM</option>
+      			<option value="12/13">12PM-1PM</option>
+      			<option value="13/14">1PM-2PM</option>
+
+   			 </select>
+   			 <button ng-click="check()">Check!</button><br>
+   			 Selected Time = {{timeSelect}}
+   			 <br/><br/>
+   			<br/>
+   			 <br/>
+   			 
+
+   			 <ul ng-repeat="objects in therapist_list">
+   			 	<li>{{objects.userid}}</li>
+   			 	<button class="btn btn-danger" ng-click="book(objects.userid)">BOOK</button>
+   			 </ul>
+   			 <br/>
+   			 <br/>
+   			 {{booking_message}}
+         <br/>
+         <br/>
+
+         
+
+          <a href="/hello">Click here</a>
+
+
+      </div>

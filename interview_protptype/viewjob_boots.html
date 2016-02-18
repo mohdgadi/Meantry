@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style type="text/css">
+   .allbuttons
+   {
+      margin-right: 3%;
+      margin-left: 3%;
+
+   }
+   .td
+   {
+      margin-bottom: 10%;
+   }
+   div.scroll
+        {
+          height: 80%;
+          overflow: scroll;
+        }
+    .centerclass
+    {
+
+    }
+        
+  </style>
+   <script type="text/javascript" src = "cordova.js"></script>
+    <script type="text/javascript">
+        function callindex()
+        {
+            window.location = "index_boots.html";
+        }
+        function callprofile()
+        {
+            window.location = "profile_boots.html";
+        }
+        
+    </script>
+</head>
+<body class="allbuttons" >
+  <div class="dropdown" style="width:100%" align="center">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="width:80%">Select Job
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
+  <div class = "scroll" >
+    <table style="width:100%" class="table">
+      <thead>
+      <tr>
+        <th>Candidate Name</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Jill Smith<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Priyanka Pandit<br> MCA</td>
+        <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>James Franklin<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()"  class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+            <tr>
+        <td>Hemant Pal<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()"  class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Rahul Kasar<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Ankit Painoli<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Akash Singh<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()"  class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Mohit Shetty<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()"  class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+            <tr>
+        <td>Hemant Pal<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()"  class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Rahul Kasar<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Ankit Painoli<br> MCA</td>
+         <td align="center"><button type="button" onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>
+      <tr>
+        <td>Hemant Pal<br> MCA</td>
+         <td align="center"><button type="button"  onclick="callprofile()" class="btn btn-primary active" style="margin-bottom:2%;margin-top:2%">View Profile</button></td>
+      </tr>   
+      </tbody>      
+      </table>
+    </div>
+<div>
+  <button type="button" onclick="callindex()" class="btn btn-primary btn-lg btn-block">Close</button>
+</div>
+</body>
+</html>

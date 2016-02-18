@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+      <!-- Meetups View -->
+      <div class="container" >
+
+        <br/>
+        <br/>
+
+        <ul ng-repeat="objects in therapist_list">
+          <li>Userid:{{objects.userid}}<br/>
+              Name:{{objects.name}}<br/>
+              Bio:{{objects.bio}}<br/>
+              Gender:{{objects.gender}}<br/>
+              Price:{{objects.price}}<br/>
+              Ratings:{{objects.ratings}}<br/>
+
+
+
+          </li>
+          <button class="btn btn-danger" ng-click="book(objects.userid)">BOOK</button>
+          <br/>
+         </ul>
+         <br/>
+         <br/>
+         {{booking_message}}
+         <br/>
+         <br/>
+         
+
+         <br/>
+         <br/>
+         {{yoyo}}
+
+        
+
+      </div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style type="text/css">
+   .allbuttons
+   {
+      margin-right: 3%;
+      margin-left: 3%;
+
+   }
+   .td
+   {
+      margin-bottom: 10%;
+   }
+  </style>
+   <script type="text/javascript" src = "cordova.js"></script>
+    <script type="text/javascript">
+        function viewjob()
+        {
+            window.location = "viewjob_boots.html";
+        }
+        function callpre()
+        {
+            window.location = "createpre_boots.html";
+        }
+        function callinterview_score()
+        {
+            window.location = "interview_score_boots.html";
+        }
+        function attend()
+        {
+            window.location = "interview_Scoring.html";
+        }
+        function callviewscore()
+        {
+            window.location = "final_score_boots.html";
+        }
+    </script>
+</head>
+<body class="allbuttons">
+
+ <table style="width:100%;height:100%;">
+  <tr class="td">
+      <td class="td">
+      <button type="button" onclick="viewjob()"  class="btn btn-primary btn-lg btn-block" style="margin-bottom:9%;margin-top:2%">View Job</button>
+      </td>
+  </tr>
+  <tr class="td">
+      <td class="td">
+      <button type="button" onclick="callpre()" class="btn btn-primary btn-lg btn-block" style="margin-bottom:9%">Create Pre-Interview</button>
+      </td>
+  </tr>
+  <tr class="td">
+      <td class="td">
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom:9%">Create Interview</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom:9%">View Response</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+      <button type="button" onclick="callinterview_score()" class="btn btn-primary btn-lg btn-block" style="margin-bottom:9%">Attend Interview</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+      <button type="button" onclick="callviewscore()" class="btn btn-primary btn-lg btn-block">View Interview Scores</button>
+      </td>
+  </tr>
+ </table>
+
+</div>
+</body>
+</html>
