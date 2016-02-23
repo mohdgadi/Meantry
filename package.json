@@ -12,6 +12,7 @@
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "mongojs": "^2.3.0",
-    "mongoose": "^4.4.3"
+    "mongoose": "^4.4.3",
+    "ngstorage": "^0.3.10"
   }
 }

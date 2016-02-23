@@ -1,18 +1,27 @@
-var myapp=angular.module('myApp', ['ngRoute']);
+var myapp=angular.module('myApp', ['ngRoute','ngStorage']);
 
 myapp.service('productService', function() {
 
   var productList;
   var time_value;
   var date_value;
+  var message;
+
+  var setmessage=function(value){
+    message=value;
+  };
 
   var setTime= function(value){
   	time_value=value;
-    }
+    };
 
   var setDate= function(value){
   	date_value=value;
   	
+  }
+
+  var getmessage=function(){
+    return message;
   }
 
   var getTime=function(){
@@ -36,12 +45,47 @@ myapp.service('productService', function() {
     getDate : getDate,
     getTime : getTime,
     setDate : setDate,
-    setTime : setTime
+    setTime : setTime,
+    setmessage : setmessage,
+    getmessage : getmessage
   };
   });
 
-myapp.controller('contrl1', ['$scope','productService','$http', function ($scope,productService,$http) {
+myapp.controller('contrl4', ['$scope','productService','$localStorage','$http', 
+  function ($scope,productService,$localStorage,$http) {
+
+    $scope.submit=function(name,email,phone){
+      $localStorage.name=name;
+      $localStorage.email=email;
+      $localStorage.phone=phone;
+    }
+
+  }]);
+
+myapp.controller('contrl3', ['$scope','productService','$localStorage','$http',
+  function ($scope,productService,$localStorage,$http) {
+
+
+
+  $scope.select = function () {
+      var service=$scope.service_Select;
+      console.log(service);
+      productService.setmessage(service);
+  };
+
+
+
+}]);
+
+myapp.controller('contrl1', ['$scope','productService','$localStorage','$http', 
+  function ($scope,productService,$localStorage,$http) {
 	
+ var tp=productService.getmessage();
+
+ console.log(tp);
+
+
+
 	$scope.check = function () {
 	var times=$scope.timeSelect;
 	var dates=$scope.dateSelect;
@@ -63,7 +107,7 @@ var st=$scope.therapist_list;
 
    productService.addProduct(result);
   });
-}
+};
 
 	 
 	
@@ -71,11 +115,15 @@ var st=$scope.therapist_list;
 }]);
 
 
-myapp.controller('contrl2', ['$scope','productService','$http', function ($scope,productService,$http) {
+myapp.controller('contrl2', ['$scope','productService','$localStorage','$http',
+ function ($scope,productService,$localStorage,$http) {
 	
     var userid_list;
 	  userid_list = productService.getProducts();
     console.log(userid_list);
+     var service=productService.getmessage();
+
+ console.log(service);
    
 
 	  $scope.timess=productService.getTime();
@@ -83,7 +131,12 @@ myapp.controller('contrl2', ['$scope','productService','$http', function ($scope
 		$scope.datess=productService.getDate();
     var newDataArray;
 
-    $http.get('/therapist_data').success(function(response) {
+    var config= {
+   params: { service_type:service
+      }
+};
+
+    $http.get('/therapist_data',config).success(function(response) {
     console.log("I got the data I requested");
     var resdata=response;
  
@@ -118,13 +171,15 @@ myapp.controller('contrl2', ['$scope','productService','$http', function ($scope
            $scope.therapist_list="";
 	       }, 
 	       function(response){
-	         // failure callback
+	         // failure callbac
 	       }
 	    );
 
 		 
 	 	
 	 }
+
+   
 		
 
 }]);
@@ -138,6 +193,16 @@ myapp.config(function($routeProvider, $locationProvider) {
   .when('/hello', {
     templateUrl: '../views/view2.html',
     controller: 'contrl2',
+    
+  })
+  .when('/service_type', {
+    templateUrl: '../views/view3.html',
+    controller: 'contrl3',
+    
+  })
+  .when('/user_info', {
+    templateUrl: '../views/view4.html',
+    controller: 'contrl4',
     
   });
 

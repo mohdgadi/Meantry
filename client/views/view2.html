@@ -6,7 +6,32 @@
         <br/>
         <br/>
 
-        <ul ng-repeat="objects in therapist_list">
+        <div class="search">
+    <label>search: </label>
+    <input ng-model="search.name" placeholder="Search for Therapists" autofocus>
+
+    <label class="formgroup">by:
+      <select ng-model="therapistorder">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="ratings">Ratings</option>
+      </select>
+    </label>
+
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" checked>
+      ascending
+     </label>
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" value="reverse">
+      descending
+    </label>
+   
+  </div>
+
+  <br/>
+  <br/>
+        <ul ng-repeat="objects in therapist_list | filter: search | orderBy: therapistorder:direction">
           <li>Userid:{{objects.userid}}<br/>
               Name:{{objects.name}}<br/>
               Bio:{{objects.bio}}<br/>

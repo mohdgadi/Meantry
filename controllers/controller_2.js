@@ -5,6 +5,7 @@ module.exports.create = function (req, res) {
 var dates = req.query.date;
 var times = req.query.time;
 
+
 var result="yes";
 
 var query=`dates.${dates}.${times}.ava`;

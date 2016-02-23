@@ -4,7 +4,7 @@ var bodyparser=require('body-parser');
 
 var app = express();
 var controlleri=require('./controllers/controller_2');
-var mongoose_controller=require('./controllers/mongoose_controller')
+var mongoose_controller=require('./controllers/mongoose_controller');
 
 app.use(express.static(path.join(__dirname, 'client')));
 
