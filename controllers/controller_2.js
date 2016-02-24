@@ -4,6 +4,7 @@ var db = mongojs('mongodb://localhost:27017/hockey', ['mohd']);
 module.exports.create = function (req, res) {
 var dates = req.query.date;
 var times = req.query.time;
+console.log(dates+times);
 
 
 var result="yes";
@@ -16,6 +17,7 @@ var query=`dates.${dates}.${times}.ava`;
     }else{
     	console.log("results found");
     	res.json(docs);
+        console.log(docs);
     	
     }
 });

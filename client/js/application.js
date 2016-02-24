@@ -1,58 +1,18 @@
 var myapp=angular.module('myApp', ['ngRoute','ngStorage']);
 
-myapp.service('productService', function() {
 
-  var productList;
-  var time_value;
-  var date_value;
-  var message;
+myapp.controller('contrl4', ['$scope' ,'$localStorage','$http', 
+  function ($scope,  $localStorage,$http) {
 
-  var setmessage=function(value){
-    message=value;
-  };
-
-  var setTime= function(value){
-  	time_value=value;
-    };
-
-  var setDate= function(value){
-  	date_value=value;
-  	
-  }
-
-  var getmessage=function(){
-    return message;
-  }
-
-  var getTime=function(){
-      return time_value;
-  };
-   var getDate=function(){
-      return date_value;
-  };
-
-  var addProduct = function(newObj) {
-     productList=newObj;
-  };
-
-  var getProducts = function(){
-      return productList;
-  };
-
-  return {
-    addProduct: addProduct,
-    getProducts: getProducts,
-    getDate : getDate,
-    getTime : getTime,
-    setDate : setDate,
-    setTime : setTime,
-    setmessage : setmessage,
-    getmessage : getmessage
-  };
-  });
-
-myapp.controller('contrl4', ['$scope','productService','$localStorage','$http', 
-  function ($scope,productService,$localStorage,$http) {
+    if($localStorage.name){
+      $scope.name=$localStorage.name;
+    }
+    if($localStorage.email){
+      $scope.email=$localStorage.email;
+    }
+    if($localStorage.phone){
+      $scope.phone=$localStorage.phone;
+    }
 
     $scope.submit=function(name,email,phone){
       $localStorage.name=name;
@@ -62,51 +22,37 @@ myapp.controller('contrl4', ['$scope','productService','$localStorage','$http',
 
   }]);
 
-myapp.controller('contrl3', ['$scope','productService','$localStorage','$http',
-  function ($scope,productService,$localStorage,$http) {
+myapp.controller('contrl3', ['$scope' ,'$localStorage','$http',
+  function ($scope,  $localStorage,$http) {
 
-
+    if($localStorage.service){
+      $scope.service_Select=$localStorage.service;
+    }
 
   $scope.select = function () {
       var service=$scope.service_Select;
       console.log(service);
-      productService.setmessage(service);
+      $localStorage.service=service;
   };
 
 
 
 }]);
 
-myapp.controller('contrl1', ['$scope','productService','$localStorage','$http', 
-  function ($scope,productService,$localStorage,$http) {
-	
- var tp=productService.getmessage();
-
- console.log(tp);
-
-
+myapp.controller('contrl1', ['$scope' ,'$localStorage','$http', 
+  function ($scope,  $localStorage,$http) {
 
 	$scope.check = function () {
-	var times=$scope.timeSelect;
-	var dates=$scope.dateSelect;
+    var times=$scope.timeSelect;
+    var dates=$scope.dateSelect;
+	$localStorage.time=$scope.timeSelect;
+  $localStorage.date=$scope.dateSelect;
+  var config2= {
+   params: { time: times,
+        date:dates
+      }}
 
-	productService.setTime(times);
-	productService.setDate(dates);
-
-	$scope.booking_message="";
-	var config= {
-	 params: { time: times,
-				date:dates
-			}
-};
-$http.get('/era',config).success(function(response) {
-    console.log("I got the data I requested");
-    $scope.therapist_list = response;
-var st=$scope.therapist_list;
-  var result = st.map(function(item){ return item.userid; });
-
-   productService.addProduct(result);
-  });
+	
 };
 
 	 
@@ -115,28 +61,39 @@ var st=$scope.therapist_list;
 }]);
 
 
-myapp.controller('contrl2', ['$scope','productService','$localStorage','$http',
- function ($scope,productService,$localStorage,$http) {
-	
-    var userid_list;
-	  userid_list = productService.getProducts();
-    console.log(userid_list);
-     var service=productService.getmessage();
+myapp.controller('contrl2', ['$scope' ,'$localStorage','$http',
+ function ($scope,  $localStorage,$http) {
 
- console.log(service);
-   
+  var userid_list;
 
-	  $scope.timess=productService.getTime();
+  var newDataArray;
 
-		$scope.datess=productService.getDate();
-    var newDataArray;
+
+  var service=$localStorage.service;
 
     var config= {
    params: { service_type:service
       }
 };
+  var times=$localStorage.time;
 
-    $http.get('/therapist_data',config).success(function(response) {
+  var dates=$localStorage.date;
+
+  console.log(times+dates);
+
+  var config2= {
+   params: { time: times,
+        date:dates
+      }
+};
+$http.get('/era',config2).success(function(response) {
+    console.log("I got the data I requested");
+    var st=response;
+    console.log(st);
+
+ userid_list = st.map(function(item){ return item.userid; });
+
+ $http.get('/therapist_data',config).success(function(response) {
     console.log("I got the data I requested");
     var resdata=response;
  
@@ -149,40 +106,102 @@ myapp.controller('contrl2', ['$scope','productService','$localStorage','$http',
 
     $scope.therapist_list=newDataArray;
   });
+
+
+   
+  });
+    console.log(userid_list);
+
+     
+
+     console.log(service);
    
 
-		$scope.book=function(id){
+	  $scope.timess=$localStorage.time;
+
+		$scope.datess=$localStorage.date;
+
+    
+
+  
+
+    
+   
+
+		$scope.book=function(id,name){
 		 	console.log(id);
-
-		 	var date= $scope.datess;
-		 	 var time=$scope.timess;
-
-
-		 	var data={therapist_id:id,
-		 				dates:date,
-		 			  times:time};
-
-		$http.post('/era', data)
-	   .then(
-	       function(response){
-	         // success callback
-	         console.log("posted successfully");
-	         $scope.booking_message="Booked successfully";
-           $scope.therapist_list="";
-	       }, 
-	       function(response){
-	         // failure callbac
-	       }
-	    );
-
-		 
-	 	
-	 }
+      $localStorage.therapist_id=id;
+      $localStorage.therapist_name=name;
+      console.log(name);
+}
 
    
 		
 
 }]);
+
+
+myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', 
+  function ($scope,  $localStorage,$http) {
+
+      $scope.name=$localStorage.name;
+      $scope.email=$localStorage.email;
+      $scope.phone=$localStorage.phone;
+      $scope.service=$localStorage.service;
+      $scope.therapist_name=$localStorage.therapist_name;
+      $scope.date=$localStorage.date;
+      $scope.time=$localStorage.time;
+
+
+      $scope.book=function(){
+        
+        var id=$localStorage.therapist_id;
+
+        var time=$localStorage.time;
+        var date=$localStorage.date;
+    
+
+  var data={therapist_id:id,
+            dates:date,
+            times:time};
+
+ $http.post('/era', data)
+     .then(
+         function(response){
+           // success callback
+           console.log("posted successfully");
+           $scope.summary="";
+           $scope.booking_message="Booked successfully";
+         
+         }, 
+         function(response){
+           // failure callbac
+         }
+      );
+
+     
+    
+   }
+
+
+  }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 myapp.config(function($routeProvider, $locationProvider) {
   $routeProvider
@@ -203,6 +222,10 @@ myapp.config(function($routeProvider, $locationProvider) {
   .when('/user_info', {
     templateUrl: '../views/view4.html',
     controller: 'contrl4',
+    
+  }).when('/checkout', {
+    templateUrl: '../views/view5.html',
+    controller: 'contrl5',
     
   });
 
