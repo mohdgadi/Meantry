@@ -1,10 +1,48 @@
 <div class="container" >
 	Hello
 
-	name: <input type="text" ng-model="name" name="name" required><br>
+	
+	<br/>
+		<div ng-if="session">
+
+			<div ng-if="predefined_address">
+			
+			   Here is your given address:<br/>
+			   {{defined_address}}<br/>
+
+			   <button class="btn btn-danger" ng-click="show_change_address()">Change Address</button><br/>
+
+			 </div>
+
+			<div ng-if="address_change">
+			   		Address: <input type="text" ng-model="address" name="address"><br>
+			   		<button class="btn btn-danger" ng-click="change_successful(address)">Change Address</button><br/>
+			   		
+			</div>
+
+			<div ng-if="submit_button">
+	<a href="/service_type"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
+</div>
+	   </div>
+	 
+
+	</div>
+	<div ng-if="!session">
+	   name: <input type="text" ng-model="name" name="name" required><br>
 	email: <input type="email" ng-model="email" name="email"><br>
 	phone: <input type="text" ng-model="phone" name="phone"><br>
-	<a href="/service_type"><input type="submit" ng-click="submit(name,email,phone)"/></a>
+	address:<input type="text" ng-model="address" name="address">
+
+	<div>
+	<a href="/service_type"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
+</div>
+	
+	</div>
+
+
+	<br/>
+
+	
 
 
 	</div>

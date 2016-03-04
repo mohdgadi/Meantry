@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+	<% if(isAuthenticated){ %>
+		hello <%= user.name %><br/>
+		<a href="/logout">Logout</a>
+		<% } else { %>
+			<a href="/login">Login</a>
+			<% } %> 
+
+</body>
+
+</html>
