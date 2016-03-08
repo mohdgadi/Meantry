@@ -29,6 +29,11 @@ myapp.config(function($routeProvider, $locationProvider) {
     template: 'Hello',
     controller: 'contrl6',
     
+  })
+  .when('/therapist-register', {
+    templateUrl: '../views/therapist_register.html',
+    controller: 'therapist_register_controller',
+    
   });
 
   // configure html5 to get links working on jsfiddle

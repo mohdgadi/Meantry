@@ -7,7 +7,7 @@ var thSchema=new Schema(
 			gender:String,
 			bio:String,
 			price:Number,
-			ratings:Number,
+			ratings:{ type: Number, default: 0.0 },
 			personal_training:Boolean,
 			sports_massage:Boolean,
 			aurvedic_massage:Boolean,

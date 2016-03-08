@@ -14,6 +14,7 @@ var mongoose_controller=require('./controllers/mongoose_controller');
 var user_controller=require('./controllers/user_controller');
 var booking_controller=require('./controllers/booking_controller');
 var login_message;
+var therapist_controller =require('./controllers/therapist_controller');
 
 app.set('view engine','ejs');
 
@@ -150,11 +151,15 @@ app.post('/ur-book',function(req,res){
 	console.log("done in server.js");
 });
 
+app.post('/therapist-register',therapist_controller.register);
+
 app.use('/js', express.static(__dirname));
 
 app.get('*', function (req, res) {
     res.sendFile(__dirname+'/client/views/index.html');
 });
+
+
 
 
 app.listen(3000,function(){

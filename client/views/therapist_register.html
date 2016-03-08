@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+	
+
+		<input type="text" ng-model="username" name="username" placeholder="username"><br/><br/>
+
+		<input type="password" ng-model="password" name="password" placeholder="password"><br/><br/>
+
+		<input type="text" name="name" ng-model="name" placeholder="name"><br/><br/>
+
+		<input type="text" name="phone" ng-model="phone" placeholder="phone"><br/>
+
+		Select Gender :<select ng-model="gender">
+			
+			  <option value="male">Male</option>
+			  <option value="female">Female</option>
+		</select><br/><br/>
+
+		Enter small bio:<textarea ng-model="bio" placeholder="Describe yourself here..." rows="4" cols="20">
+		</textarea><br/><br/>
+
+		<input type="text" name="price" ng-model="price" placeholder="Enter your price here"><br/>
+
+		<input type="checkbox" ng-model="personal_training" name="service" value="personal_training">Personal Training<br>
+		<input type="checkbox"  ng-model="sports_massage"  name="service" value="sports_massage">Sports Massage<br/>
+		<input type="checkbox"  ng-model="aurvedic_massage" name="service" value="aurvedic_massage">Ayurvedic Massage <br/>
+		<input type="checkbox" ng-model="pilates" name="service" value="pilates">Pilates <br/>
+
+		<br/><input type="submit" ng-click="register()" value="Registers">
+		<br/>
+		
+	
+
+
+<br/>
+{{message}}
+
+</body>
+
+</html>
