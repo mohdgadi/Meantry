@@ -18,6 +18,7 @@ var therapist_controller =require('./controllers/therapist_controller');
 
 app.set('view engine','ejs');
 
+
 app.use(bodyparser.urlencoded( {extended:false}));
 
 app.use(bodyparser.json());
@@ -31,7 +32,7 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new passportLocal(function(username,password,done){
+passport.use('local',new passportLocal(function(username,password,done){
 
  user_controller.login(username,password,function(value) {
     if (value) {
@@ -39,12 +40,33 @@ passport.use(new passportLocal(function(username,password,done){
 
       done(null, {
         id: username,
-        name: username
+        type: true
       });
 
     } 
     else {
    
+      done(null, null);
+    }
+}
+);
+}));
+
+passport.use('local2',new passportLocal(function(username,password,done){
+	console.log(username+password+"haha");
+
+ therapist_controller.login(username,password,function(value) {
+    if (value) {
+      
+    	console.log("logged from server");
+      done(null, {
+        id: username,
+        type: false
+      });
+
+    } 
+    else {
+   console.log("logged not from server");
       done(null, null);
     }
 }
@@ -57,12 +79,12 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 passport.serializeUser(function(user,done){
 
-	done(null,user.id)
+	done(null,user)
 
 });
 
-passport.deserializeUser(function(id,done){
-	done(null,{id:id,name:id});
+passport.deserializeUser(function(user,done){
+	done(null,{id:user.id,type:user.type});
 });
 
 
@@ -121,11 +143,26 @@ app.post('/loginerror',passport.authenticate('local', { successRedirect: '/home'
     }));
 
 app.get('/home',function(req,res){
-	
-	res.render(__dirname+'/client/views/home',{
-		isAuthenticated:req.isAuthenticated(),
+
+	if(req.isAuthenticated() && req.user.type){
+		console.log("true");
+		console.log(req.user.type);
+		res.render(__dirname+'/client/views/home',{
+		isAuthenticated:true,
 		user:req.user
 	});
+
+	}else{
+		console.log("false");
+
+		res.render(__dirname+'/client/views/home',{
+		isAuthenticated:false,
+		user:req.user
+	});
+	}
+
+	
+	
 	
 });
 
@@ -151,13 +188,30 @@ app.post('/ur-book',function(req,res){
 	console.log("done in server.js");
 });
 
+app.post('/api/therapist-login',passport.authenticate('local2'),function(req,res){
+	 res.writeHead(200, {'Content-Type': 'text/plain'});
+  	res.end('okay');
+});
+
 app.post('/therapist-register',therapist_controller.register);
+app.get('/api/therapist-home',function(req,res){
+	if(req.user && !req.user.type){
+		console.log("allowed");
+		res.send(req.user);
+		
+
+	}else{
+		console.log("not allowed");
+		res.send(401);
+	}
+});
 
 app.use('/js', express.static(__dirname));
 
 app.get('*', function (req, res) {
     res.sendFile(__dirname+'/client/views/index.html');
 });
+
 
 
 

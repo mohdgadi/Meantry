@@ -42,3 +42,13 @@ module.exports.book=function(req,res){
 	//console.log(req.param('userid'));
 }
 
+module.exports.register=function(id){
+
+    db.mohd.insert({"userid":id,"datelist":[]},function(){
+        console.log("inserted in mohd");
+    });
+   
+
+
+}
+

@@ -60,7 +60,7 @@ module.exports.register = function (req,res) {
 
 	module.exports.getaddress = function (req,res) {
 
-		if(req.user){
+		if(req.user.type){
 
 			User.findOne({
 			'username':[req.user.id],
@@ -88,7 +88,7 @@ module.exports.register = function (req,res) {
 
 	module.exports.getuser = function (req,res) {
 
-		if(req.user){
+		if(req.user.type){
 
 			User.findOne({
 			'username':[req.user.id],

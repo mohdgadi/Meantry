@@ -34,6 +34,14 @@ myapp.config(function($routeProvider, $locationProvider) {
     templateUrl: '../views/therapist_register.html',
     controller: 'therapist_register_controller',
     
+  }).when('/therapist-login', {
+    templateUrl: '../views/therapist_login.html',
+    controller: 'therapist_login_controller',
+    
+  }).when('/therapist-home', {
+    templateUrl: '../views/therapist_home.html',
+    controller: 'therapist_home_controller',
+    
   });
 
   // configure html5 to get links working on jsfiddle
