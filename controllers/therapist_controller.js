@@ -108,3 +108,12 @@ module.exports.login = function (username,password,callback) {
 
 
 }
+
+module.exports.get_booked_days = function (req,res) {
+	if(req.isAuthenticated() && !req.user.type ){
+		console.log("logged in browoski");
+		controlleri.getDateList(req.user.id,req,res);
+	}else{
+		res.send(401);
+	}
+}

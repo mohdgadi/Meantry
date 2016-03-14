@@ -52,3 +52,49 @@ module.exports.register=function(id){
 
 }
 
+module.exports.getDateList=function(id,req,res){
+    db.mohd.find({userid:id},{datelist:1,_id:0},function(err,docs){
+         if(err){
+        console.log("error");
+        res.send(401);
+    }else{
+        console.log("results found");
+        var data=docs[0].datelist;
+        res.send(data);
+
+        
+    }
+    });
+}
+
+module.exports.bookDates=function(req,res){
+    console.log(req.body);
+    var array=req.body.list;
+    array.forEach(function(item) {
+        var query=`dates.${item}`
+        
+      db.mohd.update({ userid: req.user.id},{$set : { [query]:{  "9/10" : { "ava" : "yes" , "bookibg_id" : "null"} , "10/11" : { "ava" : "yes" , "bookibg_id" : "null"} , "11/12" : { "ava" : "yes" , "bookibg_id" : "null"} , "12/13" : { "ava" : "yes" , "bookibg_id" : "null"} , "13/14" : { "ava" : "yes" , "bookibg_id" : "null"}} }}
+        ,function(){
+                        db.mohd.update(
+               { userid:req.user.id },
+               {
+                 $push: {
+                   datelist: {
+                      $each: [item],
+                   }
+                 } },
+                 function(){
+                    console.log("Pushed successfully");
+                   
+                 }
+            )
+        });
+     
+
+ })
+     res.writeHead(200, {'Content-Type': 'text/plain'});
+                    res.end('okay');
+}
+
+
+

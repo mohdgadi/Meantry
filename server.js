@@ -166,6 +166,12 @@ app.get('/home',function(req,res){
 	
 });
 
+app.get('/therapist-select-days',function(req,res){
+	res.render(__dirname+'/client/views/therapist_days_select')
+});
+
+app.get('/api/get_booked_days',therapist_controller.get_booked_days);
+
 app.get('/logout',function(req,res){
 	req.logout();
 	res.redirect('/home');
@@ -178,6 +184,8 @@ app.post('/era',function(req,res){
 	console.log("done in server.js");
 
 });
+
+app.post('/api/therapist/book_days',controlleri.bookDates);
 
 app.post('/ur-book',function(req,res){
 
