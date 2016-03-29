@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+			<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="/js/all_bookings.js"></script>
+	<title></title>
+</head>
+<body ng-controller = "MyController">
+<h3>
+	All recent bookings
+</h3>
+{{message}}<br/>
+
+<div ng-repeat="objects in list">
+	<a ng-href="/booking/{{objects._id}}">Booking Id:{{objects._id}}</a><br/>
+	<a ng-href="/therapist-profile/{{objects.therapist_id}}">Therapist:{{objects.therapist_id}}</a><br/><br/><br/>
+</div>
+
+</body>
+</html>

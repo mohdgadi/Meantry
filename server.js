@@ -13,8 +13,9 @@ var controlleri=require('./controllers/controller_2');
 var mongoose_controller=require('./controllers/mongoose_controller');
 var user_controller=require('./controllers/user_controller');
 var booking_controller=require('./controllers/booking_controller');
-var login_message;
 var therapist_controller =require('./controllers/therapist_controller');
+var routes=require('./Routes/routes');
+
 
 app.set('view engine','ejs');
 
@@ -88,137 +89,9 @@ passport.deserializeUser(function(user,done){
 });
 
 
-
-
-app.get('/therapist_data',mongoose_controller.finds);
-
-app.get('/api/booking/user',user_controller.getuser);
-
-app.get('/api/session_data',function(req,res){
-	if(req.isAuthenticated()){
-		var users=JSON.stringify(req.user.name);
-		console.log(users);
-		res.send(req.user.name);
-	}else{
-		res.send(401);
-	}
-});
-
-app.get('/era',controlleri.create);
-
-app.get('/login',function(req,res){
-	if(req.isAuthenticated()){
-		res.redirect('/home');
-	}else{
-	res.render(__dirname+'/client/views/login',{
-		error:""
-	});
-}
-});
-
-app.get('/register',function(req,res){
-	res.render(__dirname+'/client/views/register',{
-		error:""
-	});
-});
-
-app.get('/api/booking/user/adress',user_controller.getaddress);
-
-app.post('/register',user_controller.register);
-	
-
-
-app.post('/login',passport.authenticate('local', { successRedirect: '/home',
-   failureRedirect: '/loginerror'
-    }));
-
-app.get('/loginerror',function(req,res){
-	res.render(__dirname+'/client/views/login',{
-		error:"Invalid username or password"
-	});
-});
-
-app.post('/loginerror',passport.authenticate('local', { successRedirect: '/home',
-   failureRedirect: '/loginerror'
-    }));
-
-app.get('/home',function(req,res){
-
-	if(req.isAuthenticated() && req.user.type){
-		console.log("true");
-		console.log(req.user.type);
-		res.render(__dirname+'/client/views/home',{
-		isAuthenticated:true,
-		user:req.user
-	});
-
-	}else{
-		console.log("false");
-
-		res.render(__dirname+'/client/views/home',{
-		isAuthenticated:false,
-		user:req.user
-	});
-	}
-
-	
-	
-	
-});
-
-app.get('/therapist-select-days',function(req,res){
-	res.render(__dirname+'/client/views/therapist_days_select')
-});
-
-app.get('/api/get_booked_days',therapist_controller.get_booked_days);
-
-app.get('/logout',function(req,res){
-	req.logout();
-	res.redirect('/home');
-});
-
-app.post('/era',function(req,res){
-	console.log("got request");
-	controlleri.book(req,res);
-	booking_controller.book(req,res);
-	console.log("done in server.js");
-
-});
-
-app.post('/api/therapist/book_days',controlleri.bookDates);
-
-app.post('/ur-book',function(req,res){
-
-	console.log("got post request");
-	controlleri.book(req,res);
-	booking_controller.bookur(req,res);
-	console.log(req.body);
-	console.log("done in server.js");
-});
-
-app.post('/api/therapist-login',passport.authenticate('local2'),function(req,res){
-	 res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end('okay');
-});
-
-app.post('/therapist-register',therapist_controller.register);
-app.get('/api/therapist-home',function(req,res){
-	if(req.user && !req.user.type){
-		console.log("allowed");
-		res.send(req.user);
-		
-
-	}else{
-		console.log("not allowed");
-		res.send(401);
-	}
-});
-
 app.use('/js', express.static(__dirname));
-
-app.get('*', function (req, res) {
-    res.sendFile(__dirname+'/client/views/index.html');
-});
+// app.use('/api/',routes_api);
+app.use('/', routes);
 
 
 

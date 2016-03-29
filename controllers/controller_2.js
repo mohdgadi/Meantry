@@ -24,18 +24,23 @@ var query=`dates.${dates}.${times}.ava`;
 }
 module.exports.book=function(req,res){
 	console.log("got booking request");
-	var thid=req.body.therapist_id;
-	var dates=req.body.dates;
-	var times=req.body.times;
+    if(req.body){
+        var thid=req.body.therapist_id;
+    var dates=req.body.dates;
+    var times=req.body.times;
     console.log(dates);
 
-	var query=`dates.${dates}.${times}.ava`;
+    var query=`dates.${dates}.${times}.ava`;
 
 
-	db.mohd.update( { userid: thid },
+    db.mohd.update( { userid: thid },
    { $set: { [query]: "no" } }, function () {
     console.log("updated");
 });
+}else{
+    res.send("Get the F out of here");
+}
+	
 
 
     

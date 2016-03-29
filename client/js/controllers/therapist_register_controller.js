@@ -1,6 +1,7 @@
 myapp.controller('therapist_register_controller', ['$scope' ,'$localStorage','$http', 
   function ($scope,  $localStorage,$http) {
  
+ $scope.message="";
 
   	$scope.register=function(){
   		 	var username=$scope.username;
@@ -41,6 +42,7 @@ myapp.controller('therapist_register_controller', ['$scope' ,'$localStorage','$h
                              }, 
                              function(response){
                                // failure callbac
+                               $scope.message="Sorry username is already taken be more creative";
                              }
                           );
 

@@ -3,10 +3,14 @@ mongoose.createConnection('mongodb://localhost:27017/hockey');
 var Credentials= require('../models/therapist_auth_model');
 var Therapist=require('../models/Mongoose_model');
 var controlleri=require('./controller_2');
+var Booking=require('../models/booking_model');
+var Temporary=require('../models/therapist_temporary');
 
 module.exports.register = function (req,res) {
 
-	
+
+
+
 
 	var credentials=new Credentials({
 
@@ -38,6 +42,22 @@ module.exports.register = function (req,res) {
 		pilates=true;
 	}
 
+	var temporary=new Temporary({
+
+			userid:req.body.username,
+			password:req.body.password,
+			name:req.body.name,
+			phone:req.body.phone,
+			userid:req.body.username,
+			name:req.body.name,
+			bio:req.body.bio,
+			price:req.body.price,
+			personal_training:personal_training,
+			sports_massage:sports_massage,
+			aurvedic_massage:aurvedic_massage,
+			pilates:pilates
+
+});
 
 	var therapist=new Therapist({
 		userid:req.body.username,
@@ -50,34 +70,61 @@ module.exports.register = function (req,res) {
 		pilates:pilates
 	});
 
-	credentials.save(function(err){
+	Credentials.findOne({
+		userid:req.body.username
+	}).exec(function(err,docs){
 		if(err){
+			console.log("error Occurred");
 			res.send(401);
-			console.log("error2");
-			
-			
 		}else{
-			console.log("no error");
-				therapist.save(function(err){
-			if(err){
-				console.log("error");
-				res.send(401);
-				
+			console.log(docs);
+			if(docs==null){
+				console.log(docs);
+				temporary.save(function(err){
+					if(err){
+						console.log("error in temop");
+					}else{
+						console.log("temp done");
+					}
+				});
 			}else{
-				controlleri.register(req.body.username);
-				console.log("no error");
-				console.log("registerd successfuly");
+				console.log("docs found")
+				res.send(401);
+
+			}
+		}
+	});
+
+	
+
+	// credentials.save(function(err){
+	// 	if(err){
+	// 		res.send(401);
+	// 		console.log("error2");
+			
+			
+	// 	}else{
+	// 		console.log("no error");
+	// 			therapist.save(function(err){
+	// 		if(err){
+	// 			console.log("error");
+	// 			res.send(401);
+				
+	// 		}else{
+	// 			controlleri.register(req.body.username);
+	// 			console.log("no error");
+	// 			console.log("registerd successfuly");
 				
 			
 				
 				
-			}
-		});
+	// 		}
+	// 	});
 		
 			
 			
-		}
-	});
+	// 	}
+	// });
 
 
 }
@@ -116,4 +163,27 @@ module.exports.get_booked_days = function (req,res) {
 	}else{
 		res.send(401);
 	}
+}
+
+module.exports.get_bookings = function (req,res) {
+
+	if(req.isAuthenticated() && !req.user.type){
+		console.log(req.user.id);
+		Booking.
+  find({ therapist_id: req.user.id }).
+  sort('date').
+  exec(function (err, docs) {
+  	if(!err){
+  		console.log("found docs");
+  		res.json(docs);
+  	}else{
+  		res.send(401);
+  		console.log("not found docs");
+  	}
+  });
+	}else{
+		res.send(401);
+	}
+
+
 }

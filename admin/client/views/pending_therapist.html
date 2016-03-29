@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+			<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="/js/pending_therapist.js"></script>
+	<title></title>
+</head>
+<body ng-controller = "MyController">
+<h3>
+	Pending Therapist
+</h3>
+{{message}}<br/>
+ 
+<div ng-repeat="objects in list">
+<button type="button" ng-click="approve(objects.userid)" class="btn-primary">Approve</button><br/>
+	Therapist ID:{{objects.userid}}<br/>
+	Name:{{objects.name}} <br/>
+	Phone:{{objects.phone}}<br/>
+	Bio:{{objects.bio}}<br/>
+	Price:{{objects.price}}<br/>
+	Personal Training:{{objects.personal_training}}<br/>
+	Pilates:{{objects.pilates}}<br/>
+	Sports:{{objects.sports_massage}}<br/>
+	Aurvedic:{{objects.aurvedic}}<br/>
+	<br/><br/>
+</div>
+
+</body>
+</html>

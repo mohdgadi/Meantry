@@ -7,6 +7,25 @@ myapp.controller('therapist_home_controller', ['$scope' ,'$localStorage','$http'
 		}).then(function successCallback(response) {
 		   	
 			$scope.name=response.data.id;
+				$http({
+		  method: 'GET',
+		  url: '/api/therapist/all_bookings'
+
+
+		}).then(function successCallback(response) {
+		   	
+			$scope.bookings=response.data;
+			console.log($scope.bookings);
+
+			
+
+
+		  }, function errorCallback(response) {
+		    
+		  	
+
+		  });
+
 
 
 		  }, function errorCallback(response) {

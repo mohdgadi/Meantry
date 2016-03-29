@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<title></title>
+</head>
+<body>
+
+
+<h4>Name:<%=name%></h4>
+<h4>Userid:<%=userid%></h4>
+<h4>Price:<%=price%></h4>
+<h4>Ratings:<%=ratings%></h4>
+<h4>Bio:<%=bio%></h4>
+
+<h4>Phone:<%=phone%></h4><br/><br>
+
+<h2>Servies:</h2>
+<% if(pilates) {%>
+Pilates
+<% }%><br/>
+
+<% if(personal_training) {%>
+Personal Training
+<% }%><br/>
+
+<% if(aurvedic_massage) {%>
+Aurvedic Massage
+<% }%><br/>
+
+
+
+
+
+<a href= <%=link%> >View Bookings</a>
+
+</body>
+</html>

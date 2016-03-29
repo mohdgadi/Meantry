@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+			<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="/js/search_user_controller.js"></script>
+	<title></title>
+</head>
+<body ng-controller = "MyController">
+
+<br/><input ng-model="search" type="text"></input>
+<button type="button" ng-click="search_user()" class="btn btn-primary">Search</button>
+<br/>
+
+<div ng-repeat="objects in list">
+
+  	
+  	<a ng-href="/user-profile/{{objects.username}}">Userid:{{objects.username}}<br/>
+  	<a ng-href="/user-profile/{{objects.username}}">Name:{{objects.name}}<br/><br/><br/></div></a>
+
+
+
+  </div>
+
+</body>
+</html>

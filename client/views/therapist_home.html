@@ -1,4 +1,21 @@
 <div class="container">
-  <h2>Welcome {{name}}</h2>
+  <h2>Welcome {{name}}</h2><a href="http://localhost:3000/logout" target="_self">Logout</a>
   <a href="http://localhost:3000/therapist-select-days"  target="_self"><button type="button" class="btn btn-primary">Select days available</button></a>
+
+  <br/>
+  <br/>
+
+  <div ng-repeat="objects in bookings">
+
+  	Name:{{objects.name}}<br/>
+  	Phone:{{objects.phone}}<br/>
+  	Address:{{objects.address}}<br/>
+  	Service:{{objects.service}}<br/>
+  	Time:{{objects.time}}<br/>
+  	Date:{{objects.date}}<br/><br/><br/>
+
+
+
+
+  </div>
 </div>
