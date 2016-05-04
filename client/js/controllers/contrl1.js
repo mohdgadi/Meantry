@@ -1,15 +1,15 @@
-myapp.controller('contrl1', ['$scope' ,'$localStorage','$http', 
-  function ($scope,  $localStorage,$http) {
+myapp.controller('contrl1', ['$scope' ,'$localStorage','$http', 'dateFilter','$filter',
+  function ($scope,  $localStorage,$http,dateFilter,$filter) {
 
 	$scope.check = function () {
     var times=$scope.timeSelect;
-    var dates=$scope.dateSelect;
+    var dates=$scope.date;
 	$localStorage.time=$scope.timeSelect;
-  $localStorage.date=$scope.dateSelect;
+  $localStorage.date=$scope.date;
   var config2= {
    params: { time: times,
         date:dates
-      }}
+      }};
 
 	
 };

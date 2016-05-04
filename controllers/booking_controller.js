@@ -4,7 +4,7 @@ mongoose.createConnection('mongodb://localhost:27017/hockey');
 var Booking= require('../models/booking_model');
 var User= require('../models/user_model');
 
-module.exports.book = function (req,res) {
+module.exports.book = function (req,res,next) {
 
 	User.findOne({
 			'username':[req.user.id],
@@ -41,8 +41,7 @@ module.exports.book = function (req,res) {
 					{
 						console.log("booked succesfully bro!!!");
 
-							res.writeHead(200, {'Content-Type': 'text/plain'});
-						  res.end('okay');
+							next();
 					}
 				});
 
@@ -51,7 +50,7 @@ module.exports.book = function (req,res) {
 			
 		});
 
-}
+};
 
 
 module.exports.bookur = function (req,res) {
@@ -85,12 +84,11 @@ module.exports.bookur = function (req,res) {
 					{
 						console.log("booked succesfully bro!!!");
 
-							res.writeHead(200, {'Content-Type': 'text/plain'});
-						  res.end('okay');
+							
 					}
 				});
 
-}
+};
 
 
 

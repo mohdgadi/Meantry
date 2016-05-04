@@ -1,0 +1,47 @@
+<ion-view view-title="date">
+
+	<ion-content class="date-content">
+
+
+		<div class="date-heading">
+			<h3>
+			Select Day and Time
+		</h3>
+
+		</div>
+		
+		<div  pickadate  ng-model="date"  select-other-months="next" no-extra-rows  min-date="minDate" max-date="maxDate" ng-model="date"  format="dd/mm/yyyy"  >
+	    <div class="selected-date">
+	       
+	      </div><br/>
+	    
+	    </div> 
+
+	    <div class="date-time">
+	    	<label class="item item-input item-select">
+		    <div class="input-label">
+		      Time Slot
+		    </div>
+		    <br/>
+		    <br/>
+
+		    <select ng-model="time">
+		      
+		      <option value="9/10" selected>9AM-10AM</option>
+		      <option value="10/11">10AM-11AM</option>
+		      <option value="11/12">11AM-12PM</option>
+		      <option value="12/13">12PM-1PM</option>
+		      <option value="13/14">1PM-2PM</option>
+		    </select>
+  		</label>
+	    </div>
+	   
+
+	    <div class="date-button">
+		  	<a href="#/app/info"><button ng-click="date_Proceed()" class="button button-full button-positive">
+			  Proceed
+			</button>
+		 </div>
+	</ion-content>
+
+</ion-view>

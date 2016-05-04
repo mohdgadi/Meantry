@@ -49,7 +49,7 @@ myapp.controller('therapist_register_controller', ['$scope' ,'$localStorage','$h
 
 
 
-  		  	}
+  		  	};
 
 
 

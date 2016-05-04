@@ -1,5 +1,5 @@
 var express = require('express');
-
+var async = require('async');
 var passport=require('passport');
 var passportLocal=require('passport-local').Strategy;
 var path = require('path');
@@ -80,7 +80,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 passport.serializeUser(function(user,done){
 
-	done(null,user)
+	done(null,user);
 
 });
 
@@ -99,7 +99,7 @@ app.use('/', routes);
 
 app.listen(3000,function(){
   console.log("server strated");
-})
+});
 
 // catch 404 and forward to error handler
 

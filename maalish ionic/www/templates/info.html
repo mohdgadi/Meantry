@@ -1,0 +1,70 @@
+<ion-view view-title="info">
+
+
+<ion-content class="info-content">
+
+	<div class="service-heading">
+			<h3 >
+			Input your info.
+			</h3>
+		</div>
+	
+	<form name="myForm" novalidate>
+      <div class="list"> 
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+          <input ng-model="username" type="email" name="username" placeholder="Email"  required>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Name</span>
+          <input ng-model="name" name="name" type="text" placeholder="Name"  required>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Phone</span>
+          <input ng-model="phone" ng-minlength="10" ng-maxlength="10" name="phone" type="number" placeholder="Phone"  required>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Zip Code</span>
+          <input ng-model="zip" name="zip" type="number" placeholder="Zip Code"  required>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Address</span>
+          <textarea ng-model="address" name="address" placeholder="Address"  required></textarea>
+        </label>
+
+        <div class="padding">
+
+            <p ng-show="myForm.username.$error.required && myForm.username.$dirty && myForm.username.$touched">* Username is required</p>
+
+            <p ng-show="myForm.username.$invalid && !myForm.username.$pristine">* Must be a valid email address</p>
+
+            <p ng-show="myForm.name.$error.required  && myForm.name.$dirty && myForm.name.$touched">* Name is required</p>
+
+            <p ng-show="myForm.phone.$error.required  && myForm.phone.$dirty && myForm.phone.$touched">* Phone is required</p>
+
+            <p ng-show="(myForm.phone.$error.minlength || myForm.phone.$error.maxlength || myForm.phone.$invalid) && myForm.phone.$dirty">*Phone number should  be valid</p>
+
+
+
+            <p ng-show="myForm.zip.$error.required  && myForm.zip.$dirty && myForm.zip.$touched">* Zip Code is required</p>
+
+            <p ng-show="myForm.address.$error.required  && myForm.address.$dirty && myForm.address.$touched">* Address is required</p>
+        </div>
+       
+
+       
+          <button ng-disabled="myForm.$invalid" ng-click="submit(username,name,phone,zip,address)" class="button button-block button-positive" type="submit">Proceed!</button>
+
+          
+        
+      </div>
+    </form>
+
+</ion-content>
+
+</ion-view>

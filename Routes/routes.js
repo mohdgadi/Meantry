@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var async = require('async');
 var passport=require('passport');
 var passportLocal=require('passport-local').Strategy;
 var path = require('path');
@@ -104,22 +104,23 @@ router.get('/logout',function(req,res){
 	
 });
 
-router.post('/era',function(req,res){
-	console.log("got request");
-	controlleri.book(req,res);
-	booking_controller.book(req,res);
+router.post('/era',controlleri.book,booking_controller.book,function(req,res){
+
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+						  res.end('okay');
 	console.log("done in server.js");
+	
 
 });
 
 
 
-router.post('/ur-book',function(req,res){
+router.post('/ur-book',controlleri.book,booking_controller.bookur ,function(req,res){
 
 	console.log("got post request");
-	controlleri.book(req,res);
-	booking_controller.bookur(req,res);
-	console.log(req.body);
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+						  res.end('okay');
+	
 	console.log("done in server.js");
 });
 

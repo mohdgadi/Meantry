@@ -1,0 +1,78 @@
+
+.slider { height: 100%; text-align: center }
+.scroll { height: 100%}
+.slide-img{
+
+}
+.splash-heading{
+	/*margin-top: 10%*/
+}
+.slide-ionic{
+	padding-top: 7%;
+}
+.login_paragraph{
+	font-weight: 800;
+}
+.book-content{
+	padding-top: 15%;
+	text-align: center;
+}
+.book-heading{
+	padding-bottom: 5%;
+	}
+
+
+.book-button{
+	padding-top: 7%;
+}
+.service-content{
+	padding-top: 15%;
+	text-align: center;
+}
+
+.service-heading{
+	padding-bottom: 5%;
+	}
+
+.service-button{
+	padding-top: 3%;
+}
+.date-content{
+	/*text-align: center;*/
+}
+.date-heading{
+	padding-top: 5%;
+	text-align: center;
+}
+.date-time{
+	padding-top: 3%;
+}
+.date-button{
+	padding-top: 3%;
+}
+.service-heading{
+	padding-top: 5%;
+	text-align: center;
+}
+.info2-content{
+	padding-top: 5%;
+}
+.info2-button{
+	float: right;
+}
+.info2-content textarea{
+	resize: none;
+}
+.therapist-para{
+	float: left;
+	text-align: left;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

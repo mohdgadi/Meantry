@@ -2,16 +2,19 @@
 
 <!DOCTYPE html>
       
+      <link rel="stylesheet" href="./stylesheets/date_select.css">
+       <link rel="stylesheet" type="text/css" href="./stylesheets/angular-pickadate.css" />
           <!-- Meetups View -->
       <div class="container" >
       	<label for="singleSelect"> Select Date </label><br>
-    		<select nAMe="singleSelect" ng-model="dateSelect">
-    			<option value="03/04/2016">2nd Jan</option>
-      			<option value="04/04/2016">3rd Jan</option>
+    		
 
- 			</select><br>
-   			 Selected date = {{dateSelect}}
-   			 <br/><br/><br/>
+         <div  pickadate  ng-model="date"  select-other-months="next" no-extra-rows  min-date="minDate" max-date="maxDate" ng-model="date"  format="dd/mm/yyyy"  >
+    <div class="selected-date">
+        Selected date is {{date || '(no date selected)'}}
+      </div><br/>
+    <button type="button" ng-click="addDates(date)" class="btn btn-primary">Select days</button>
+    </div>    <br/><br/>
 
 
       	<label for="singleSelect"> Select time </label><br>
@@ -40,11 +43,8 @@
          <br/>
          <br/>
 
-         
-
-         
-
-          
-
-
+      
       </div>
+
+      
+

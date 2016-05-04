@@ -1,0 +1,48 @@
+<ion-view view-title="service">
+
+	<ion-content class="service-content">
+
+		<div class="service-heading">
+			<h3 >
+			Select service Type
+			</h3>
+		</div>
+
+		<label class="item item-input item-select">
+		    <div class="input-label">
+		      Service
+		    </div>
+		    <br/>
+		    <br/>
+
+		    <select ng-model="formData.service_Select">
+		      
+		      <option value="personal_training" selected>Personal Training</option>
+		      <option value="sports_massage">Sports Massage</option>
+		      <option value="aurvedic_massage">Ayurvedic Massage</option>
+		      <option value="pilates">Pilates</option>
+		      
+		    </select>
+  		</label>
+
+  		<div class="list card">
+		  <div class="item item-body">
+		    <img class="full-image" src="http://placehold.it/900x400">
+		    <p>
+		      {{description}}
+		    </p>
+		    
+		    
+		  </div>
+  		</div>
+
+  		<div class="service-button">
+		  	<a href="#/app/date"><button ng-click="service_Proceed()" class="button button-full button-positive">
+			  Proceed
+			</button>
+		 </div>
+
+
+	</ion-content>
+
+</ion-view>

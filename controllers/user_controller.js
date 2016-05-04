@@ -54,14 +54,15 @@ module.exports.register = function (req,res) {
 			callback(status);
 		});
 
+		
 
 	};
 
 
 	module.exports.getaddress = function (req,res) {
 
-		if(req.user.type){
-
+		if(req.user){
+			if(req.user.type){
 			User.findOne({
 			'username':[req.user.id],
 		},'address',function(err,user){
@@ -77,7 +78,7 @@ module.exports.register = function (req,res) {
 			
 		});
 
-		}else{
+		}}else{
 				res.send(401);
 		}
 
@@ -88,7 +89,8 @@ module.exports.register = function (req,res) {
 
 	module.exports.getuser = function (req,res) {
 
-		if(req.user.type){
+		if(req.user){
+			if(req.user.type){
 
 			User.findOne({
 			'username':[req.user.id],
@@ -105,7 +107,7 @@ module.exports.register = function (req,res) {
 			
 		});
 
-		}else{
+		}}else{
 				res.send(401);
 		}
 

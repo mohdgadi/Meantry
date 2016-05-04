@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.0.0-rc.2",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "dateformat": "^1.0.12",

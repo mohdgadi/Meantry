@@ -1,0 +1,21 @@
+.banner img{
+	width:100%;
+	max-height: 300px;
+}
+#location_label{
+	background-color:cyan;
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	font: 24px; 
+	margin-top: 20px;
+	max-width: 400px;
+}
+#service_button{
+	height: 50px;
+	margin-bottom: 30px;
+	max-width: 400px;
+}
+#location_select{
+	max-width: 400px;
+}

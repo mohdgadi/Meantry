@@ -51,13 +51,13 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
                              
                              }, 
                              function(response){
-                               // failure callbac
+                              console.log("eroro ocured");
                              }
                           );
 
                          
                         
-                       }
+                       };
 
 
                   }else{
@@ -144,7 +144,7 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
 
 
 
-                              }
+                              };
 
                     console.log("got therapist id and name");
 

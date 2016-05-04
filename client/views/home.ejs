@@ -3,15 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Title of the document</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="./stylesheets/home_page.css">
 </head>
 
 <body>
-	<% if(isAuthenticated){ %>
-		hello <%= user.id %><br/>
-		<a href="/logout">Logout</a>
+
+	<div class="banner">
+		<img src="./images/cover.jpg" >
+	</div><br/>
+
+	<div class="container">
+		<h2>
+			Welcome To Maalish
+		</h2>
+
+
+		<% if(isAuthenticated){ %>
+		<h3>hello <%= user.id %><br/></h3>
+		<h3><a href="/logout">Logout</a></h3>
 		<% } else { %>
-			<a href="/login">Login</a>
+			<h3><a href="/login">Login</a></h3>
+			<h3><a href="/register">Register</a></h3>
 			<% } %> 
+
+			<div class="dropdown">
+				<label id="location_label" for="location_select">Select Location</label>
+				<select class="form-control" id="location_select">
+			        <option>Mumbai</option>
+			        
+			     </select>
+			</div>
+			<a href="/service_type"<button id="service_button" type="button" class="btn btn-success btn-block">Get a Service</button></a>
+
+
+	</div>
+	
 
 </body>
 

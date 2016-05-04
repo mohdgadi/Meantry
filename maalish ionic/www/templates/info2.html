@@ -1,0 +1,41 @@
+<ion-view view-title="info2">
+
+
+<ion-content class="info2-content">
+
+	<div ng-if="card" class="card">
+	  <div class="item item-divider">
+	    Your Address
+	  </div>
+	  <div class="item item-text-wrap">
+	    
+	    {{address}}
+	  </div>
+	  <button ng-click="show_change_address()" class="button button-royal info2-button">
+		 Change Address
+		</button>
+	 </div>
+
+	 <div ng-if="!card" class="card">
+	 	<div class="item item-divider">
+	    Enter Your Address
+
+	  </div>
+	  <label class="item item-input item-floating-label">
+          <span class="input-label">Address</span>
+          <textarea ng-model="address" placeholder="Address"></textarea>
+        </label>
+        <button ng-click="change_address(address)" class="button button-royal info2-button">
+		 Submit Address
+		</button>
+
+		</div>
+
+		<div ng-if="card">
+		<label class="item">
+          <button class="button button-block button-positive" ng-click="submit(address)" type="submit">Proceed!</button>
+        </label>
+        </div>
+
+  </ion-content>
+  </ion-view>

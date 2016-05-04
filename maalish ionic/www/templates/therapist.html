@@ -1,0 +1,51 @@
+<ion-view view-title="therapist">
+
+<div class="bar bar-subheader">
+  <input type="text" placeholder="Search Therapist" ng-model="search.name">
+</div>
+
+<ion-content class="info2-content padding has-subheader">
+
+	<h4>
+		Select Therapist
+	</h4>
+	
+	<div class="list">
+
+	<label class="item item-input item-select">
+		    <div class="input-label">
+		      Sort by:
+		    </div>
+		    <br/>
+		    <br/>
+
+		    <select ng-model="therapistorder">
+		      
+          <option value="name" selected>Name</option>
+		      <option value="price">Price</option>
+		      <option value="-ratings">Ratings</option>
+		      
+		    </select>
+  		</label>
+
+
+    <div ng-repeat="x in objects | filter: search | orderBy: therapistorder" >
+    <a class="item item-thumbnail-left" href="#">
+      <img ng-src={{x.img}}>
+      <h2>{{x.name}}</h2>
+      <p> <b>Price : </b>{{x.price}}₹<br/></p>
+      <p> <b>Ratings : </b>{{x.ratings}}(684) </p>
+    </a>
+    </div>
+   
+
+   
+</div>
+
+		<label class="item">
+          <button ng-click="submit()" class="button button-block button-positive" type="submit">Proceed!</button>
+        </label>
+
+
+</ion-content>
+</ion-view>

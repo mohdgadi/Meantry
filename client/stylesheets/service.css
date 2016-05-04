@@ -1,0 +1,18 @@
+.image img{
+	max-height:500px;
+}
+.description{
+	font-size: 24px;
+	font-weight: 800;
+}
+.content{
+	margin-top: 30px;
+	padding: 10px;
+	border: 5px solid teal;
+
+}
+.dropdown{
+	width: 400px;
+	height: 40px;
+	border-radius: 8px;
+}

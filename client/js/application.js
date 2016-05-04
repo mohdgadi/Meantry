@@ -1,4 +1,4 @@
-var myapp=angular.module('myApp', ['ngRoute','ngStorage']);
+var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate']);
 
 
 myapp.config(function($routeProvider, $locationProvider) {
@@ -22,7 +22,7 @@ myapp.config(function($routeProvider, $locationProvider) {
     controller: 'contrl4',
     
   }).when('/checkout', {
-    templateUrl: '../views/view5.html',
+    templateUrl: '../views/checkout.html',
     controller: 'contrl5',
     
   }).when('/test_login', {
