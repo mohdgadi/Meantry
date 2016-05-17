@@ -1,5 +1,13 @@
 myapp.controller('contrl4', ['$scope' ,'$localStorage','$http', 
   function ($scope,  $localStorage,$http) {
+
+
+    $scope.service=$localStorage.service;
+    $scope.times=$localStorage.time;
+    $scope.dates=$localStorage.date;
+    $scope.therapist_name=$localStorage.therapist_name;
+
+
     $scope.address_change=false;
     $scope.submit_button=true;
     $http({
@@ -14,7 +22,7 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
                $scope.submit=function(){
             $localStorage.address=$scope.defined_address;
             console.log("saved");
-          }
+          };
 
              $scope.session=true;
 
@@ -22,14 +30,14 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
           $scope.predefined_address=false;
           $scope.address_change=true;
           $scope.submit_button=false;
-        }
+        };
 
         $scope.change_successful=function(address){
            $scope.defined_address=address;
            $scope.address_change=false;
            $scope.predefined_address=true;
            $scope.submit_button=true;
-        }
+        };
 
 
             })
@@ -58,7 +66,7 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
             $localStorage.email=email;
             $localStorage.phone=phone;
             $localStorage.address=address;
-          }
+          };
         });
 
 

@@ -1,5 +1,17 @@
 var mongoose = require('mongoose');
-mongoose.createConnection('mongodb://localhost:27017/hockey');
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
+
+var mongodbUri = 'mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish';
+mongoose.connect(mongodbUri, options);
+var conn = mongoose.connection;             
+ 
+conn.on('error', console.error.bind(console, 'connection error:'));  
+ 
+conn.once('open', function() {
+  // Wait for the database connection to establish, then start the app.  
+  console.log("connected");                       
+});
 var Credentials= require('../models/therapist_auth_model');
 var Therapist=require('../models/Mongoose_model');
 var controlleri=require('./controller_2');

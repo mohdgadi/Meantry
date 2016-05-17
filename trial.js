@@ -1,9 +1,10 @@
+var express = require('express');
+var app = express();
 
-var arr = [ { userid: 'a' },
-  { userid: 'b' },
-  { userid: 'c' },
-  { userid: 'd' },
-  { userid: 'e' } ]
+app.get('/', function (req, res){ 
+  res.send('Hello there, world!\n');
+});
 
-var userid_list = arr.map(function(item){ return item.userid; });
-console.log(userid_list);
+var port = 9000;
+app.listen(port);
+console.log('Listening on port', port);

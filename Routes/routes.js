@@ -88,7 +88,7 @@ router.get('/home',function(req,res){
 });
 
 router.get('/therapist-select-days',function(req,res){
-	res.render('../client/views/therapist_days_select')
+	res.render('../client/views/therapist_days_select');
 });
 
 
@@ -172,7 +172,7 @@ router.get('/api/therapist/all_bookings',therapist_controller.get_bookings);
 
 router.get('*', function (req, res) {
     // res.sendFile('./client/views/index.html');
-    res.sendFile('/client/views/index.html', { root: 'C:/Users/mohd/Desktop/meantry' });
+    res.sendFile('/client/views/index.html', { root: 'C:/Users/mohd/Desktop/meantry3' });
 });
 
 

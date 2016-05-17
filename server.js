@@ -15,7 +15,7 @@ var user_controller=require('./controllers/user_controller');
 var booking_controller=require('./controllers/booking_controller');
 var therapist_controller =require('./controllers/therapist_controller');
 var routes=require('./Routes/routes');
-
+var mongojs = require('mongojs');
 
 app.set('view engine','ejs');
 
@@ -97,7 +97,7 @@ app.use('/', routes);
 
 
 
-app.listen(3000,function(){
+app.listen(9000,function(){
   console.log("server strated");
 });
 

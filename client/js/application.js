@@ -3,22 +3,22 @@ var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate']);
 
 myapp.config(function($routeProvider, $locationProvider) {
   $routeProvider
-   .when('/try', {
-    templateUrl: '../views/view1.html',
+   .when('/date-select', {
+    templateUrl: '../views/date-select.html',
     controller: 'contrl1',
   })
-  .when('/hello', {
-    templateUrl: '../views/view2.html',
+  .when('/therapist-select', {
+    templateUrl: '../views/therapist-select.html',
     controller: 'contrl2',
     
   })
   .when('/service_type', {
-    templateUrl: '../views/view3.html',
+    templateUrl: '../views/service_type.html',
     controller: 'contrl3',
     
   })
   .when('/user_info', {
-    templateUrl: '../views/view4.html',
+    templateUrl: '../views/user-info.html',
     controller: 'contrl4',
     
   }).when('/checkout', {
@@ -41,6 +41,10 @@ myapp.config(function($routeProvider, $locationProvider) {
   }).when('/therapist-home', {
     templateUrl: '../views/therapist_home.html',
     controller: 'therapist_home_controller',
+    
+  }).when('/session-select', {
+    templateUrl: '../views/session-select.html',
+    controller: 'session_select_controller',
     
   });
 

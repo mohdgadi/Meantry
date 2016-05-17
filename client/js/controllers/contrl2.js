@@ -7,15 +7,18 @@ myapp.controller('contrl2', ['$scope' ,'$localStorage','$http',
 
 
   var service=$localStorage.service;
+  $scope.service=$localStorage.service;
 
     var config= {
    params: { service_type:service
       }
 };
   var times=$localStorage.time;
+  $scope.times=$localStorage.time;
 
   var dates=$localStorage.date;
-
+  $scope.dates=$localStorage.date;
+  
   console.log(times+dates);
 
   var config2= {

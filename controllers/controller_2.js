@@ -1,5 +1,13 @@
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://localhost:27017/hockey', ['mohd']);
+var db = mongojs('mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish', ['mohd'], { ssl : true });
+
+db.on('error', function (err) {
+    console.log('database error', err);
+});
+
+db.on('connect', function () {
+    console.log('database connected');
+});
 
 module.exports.create = function (req, res) {
 var dates = req.query.date;

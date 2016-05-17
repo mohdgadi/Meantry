@@ -1,0 +1,57 @@
+ 	
+ 	<link rel="stylesheet" href="./stylesheets/service.css">
+
+
+   <div class="navbar ">
+      <div class="nav">
+         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg"><br/>
+            Massage
+         </div>
+      </div>
+   </div>
+
+ <div class="container" id="container">
+ 	<br/><br/>
+
+ 	<select class="dropdown" nAMe="service_select" ng-model="service_Select">
+     			 <option value="personal_training">Personal Training</option>
+      			<option value="sports_massage">Sports Message</option>
+      			<option value="aurvedic_massage">Aurvedic Message</option>
+      			<option value="pilates">Pilates</option>
+   			 </select>
+
+   			 
+   			  <br/>
+   			  <div class="content col-lg-12 col-md-12 col-sm-12  col-xs-12">
+   			  	
+   			  	<div class="image col-lg-12 col-md-12 col-sm-12  col-xs-12">
+   			  		<img class="img-responsive" ng-src={{image}}>
+   			  	</div><br/>
+
+   			  	<div class="description">
+   			  		<p>
+   			  			{{description}}
+   			  		</p>
+   			  	</div>	
+
+   			  </div>
+              </div>
+
+              <div class="container">
+
+              <div class="prefrences">
+                 <div class="pref_heading"><br/><br/>
+                    Prefrences:
+                 </div>
+
+                 Special Instructions:<br/>
+               <textarea>
+                  
+               </textarea>
+
+              </div><br/>
+
+              <a href="/date-select"> <button type="button" class="btn btn-success" ng-click="select()">Proceed!</button><br></a>
+   			 </div>
+ 	    

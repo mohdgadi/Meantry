@@ -2,6 +2,7 @@ myapp.controller('contrl1', ['$scope' ,'$localStorage','$http', 'dateFilter','$f
   function ($scope,  $localStorage,$http,dateFilter,$filter) {
 
 	$scope.check = function () {
+  
     var times=$scope.timeSelect;
     var dates=$scope.date;
 	$localStorage.time=$scope.timeSelect;
@@ -14,7 +15,7 @@ myapp.controller('contrl1', ['$scope' ,'$localStorage','$http', 'dateFilter','$f
 	
 };
 
-	 
+	$scope.service=$localStorage.service; 
 	
 
 }]);

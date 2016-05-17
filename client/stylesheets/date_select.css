@@ -1,3 +1,42 @@
 .container{
-	margin-top:50px;
+	margin-top:100px;
+}
+.calender{
+	max-width: 700px;
+}
+
+.navbar{
+	position: fixed; top: 0px; left: 0px; z-index: 999; width:100%
+	
+}
+.nav{
+	height:100px;
+	border-bottom:1px solid grey;
+	background-color: white;
+
+
+}
+.nav img{
+	max-height: 50px;
+	margin-top: 0px;
+}
+table{
+	text-align: center;
+}
+td img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+td {
+	padding-top: 5px;
+}
+.dropdown{
+	width: 400px;
+	height: 40px;
+	border-radius: 8px;
+}
+button{
+	width: 300px;
+
 }

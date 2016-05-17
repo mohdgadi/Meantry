@@ -14,11 +14,13 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
           if($localStorage.address){
 
             var address=$localStorage.address;
+            $scope.address=$localStorage.address;
             console.log("got address");
 
             if($localStorage.service){
 
               var service=$localStorage.service;
+              $scope.service=$localStorage.service;
                 console.log("got service");
 
                 if($localStorage.time&&$localStorage.date){
@@ -26,9 +28,13 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
                   console.log("got time");
                   var time=$localStorage.time;
                   var date=$localStorage.date;
+                  $scope.times=$localStorage.time;
+                  $scope.dates=$localStorage.date;
 
                   if($localStorage.therapist_id && $localStorage.therapist_name){
                     var therapist_id=$localStorage.therapist_id;
+
+                    $scope.therapist_name=$localStorage.therapist_name;
 
                     console.log("got therapist id and name");
 
@@ -100,6 +106,7 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
             var email=$localStorage.email;
             var phone=$localStorage.phone;
             var address=$localStorage.address;
+            $scope.address=$localStorage.address;
 
             if($localStorage.service){
                 console.log("got service");
@@ -109,6 +116,8 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http',
 
                   var time=$localStorage.time;
                   var date=$localStorage.date;
+                  $scope.times=$localStorage.time;
+                  $scope.dates=$localStorage.date;
                   console.log("got date and time");
 
                   if($localStorage.therapist_id && $localStorage.therapist_name){
