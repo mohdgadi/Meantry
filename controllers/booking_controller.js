@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
 
-var mongodbUri = 'mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish';
+var mongodbUri = 'mongodb://mohd:techmatters5@ds019633.mlab.com:19633/maalish2';
+
 mongoose.connect(mongodbUri, options);
 var conn = mongoose.connection;             
  
@@ -11,7 +12,7 @@ conn.on('error', console.error.bind(console, 'connection error:'));
  
 conn.once('open', function() {
   // Wait for the database connection to establish, then start the app.  
-  console.log("connected");                       
+  console.log("connected yos");                       
 });
 var Booking= require('../models/booking_model');
 var User= require('../models/user_model');
@@ -42,9 +43,10 @@ module.exports.book = function (req,res,next) {
 					service:req.body.service,
 					time:req.body.times,
 					date:req.body.dates,
-					therapist_id:req.body.therapist_id,
+					
 					booking_date:sbooking_date,
-					booking_time:sbooking_time
+					booking_time:sbooking_time,
+					instructions:req.body.instructions
 				});
 
 				booking.save(function(err){
@@ -90,10 +92,11 @@ module.exports.bookur = function (req,res,next) {
 					service:req.body.service,
 					time:req.body.times,
 					date:req.body.dates,
-					therapist_id:req.body.therapist_id,
+					
 					email:req.body.email,
 					booking_date:sbooking_date,
-					booking_time:sbooking_time
+					booking_time:sbooking_time,
+					instructions:req.body.instructions
 				});
 
 				booking.save(function(err){
@@ -104,6 +107,9 @@ module.exports.bookur = function (req,res,next) {
 					else
 					{
 						console.log("booked succesfully bro!!!");
+						res.writeHead(200, {'Content-Type': 'text/plain'});
+						  res.end('okay');
+
 						next();
 							
 					}

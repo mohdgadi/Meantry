@@ -18,10 +18,11 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
             $scope.address=$localStorage.address;
             console.log("got address");
 
-            if($localStorage.service){
+            if($localStorage.service && $localStorage.instructions){
 
               var service=$localStorage.service;
               $scope.service=$localStorage.service;
+              var instructions=$localStorage.instructions;
                 console.log("got service");
 
                 if($localStorage.time&&$localStorage.date){
@@ -32,23 +33,16 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                   $scope.times=$localStorage.time;
                   $scope.dates=$localStorage.date;
 
-                  if($localStorage.therapist_id && $localStorage.therapist_name){
-                    var therapist_id=$localStorage.therapist_id;
-
-                    $scope.therapist_name=$localStorage.therapist_name;
-
-                    console.log("got therapist id and name");
-
                     $scope.book=function(){
 
-                    var data={therapist_id:therapist_id,
+                    var data={
                                 dates:date,
                                 times:time,
                                 address:address,
                                 service:service
                                 };
 
-                     $http.post('/era', data)
+                     $http.post('/book', data)
                          .then(
                              function(response){
                                // success callback
@@ -57,8 +51,8 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                $scope.booking_message="Booked successfully";
                                delete $localStorage.time;
                                delete $localStorage.date;
-                               delete $localStorage.therapist_id;
-                               delete $localStorage.therapist_name;
+                              
+                               
                                $window.location.href = '/booking-success';
                                 
                              }, 
@@ -66,8 +60,8 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                               console.log("eroro ocured");
                               delete $localStorage.time;
                                delete $localStorage.date;
-                               delete $localStorage.therapist_id;
-                               delete $localStorage.therapist_name;
+                               
+                               
                               $window.location.href = '/booking-failure';
                              }
                           );
@@ -77,12 +71,9 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                        };
 
 
-                  }else{
-
-                    console.log("missing therapist id and name");
                   }
 
-                }else{
+                else{
                   console.log("no date time");
                 }
 
@@ -101,11 +92,26 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
       $scope.email=response.username;
       $scope.phone=response.phone;
       $scope.service=$localStorage.service;
-      $scope.therapist_name=$localStorage.therapist_name;
+      
       $scope.date=$localStorage.date;
       $scope.time=$localStorage.time;
 
              })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         .error(function(response){
@@ -119,9 +125,10 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
             var address=$localStorage.address;
             $scope.address=$localStorage.address;
 
-            if($localStorage.service){
+            if($localStorage.service && $localStorage.instructions){
                 console.log("got service");
                 var service=$localStorage.service;
+                var instructions=$localStorage.instructions;
 
                 if($localStorage.time&&$localStorage.date){
 
@@ -131,19 +138,19 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                   $scope.dates=$localStorage.date;
                   console.log("got date and time");
 
-                  if($localStorage.therapist_id && $localStorage.therapist_name){
-                    var therapist_id=$localStorage.therapist_id;
+                 
                      $scope.book=function(){
 
                     var data={
-                                therapist_id:therapist_id,
+                                
                                 dates:date,
                                 times:time,
                                 address:address,
                                 service:service,
                                 name:name,
                                 email:email,
-                                phone:phone
+                                phone:phone,
+                                instructions:instructions
                                 };
 
 
@@ -157,8 +164,7 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                $scope.booking_message="Booked successfully";
                                delete $localStorage.time;
                                delete $localStorage.date;
-                               delete $localStorage.therapist_id;
-                               delete $localStorage.therapist_name;
+                               
                                $window.location.href = '/booking-success';
 
                              
@@ -168,9 +174,8 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                console.log("Error occurred");
                                delete $localStorage.time;
                                delete $localStorage.date;
-                               delete $localStorage.therapist_id;
-                               delete $localStorage.therapist_name;
-                               $window.location.href = '/booking-failure';
+                               
+                                                              $window.location.href = '/booking-failure';
                              }
                           );
 
@@ -178,12 +183,9 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
 
                               };
 
-                    console.log("got therapist id and name");
+                    
 
                 }
-                else{
-                  console.log("No therapist selected");
-                }}
                 else{
                   console.log("did not get date and time");
                 }
@@ -204,7 +206,7 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
       $scope.email=$localStorage.email;
       $scope.phone=$localStorage.phone;
       $scope.service=$localStorage.service;
-      $scope.therapist_name=$localStorage.therapist_name;
+      
       $scope.date=$localStorage.date;
       $scope.time=$localStorage.time;
 

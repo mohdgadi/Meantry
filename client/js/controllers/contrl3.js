@@ -19,10 +19,12 @@ myapp.controller('contrl3', ['$scope' ,'$localStorage','$http',
     $scope.message=$scope.service_Select;
     changeData();
 
-  $scope.select = function () {
+  $scope.select = function (instructions) {
       var service=$scope.service_Select;
       console.log(service);
       $localStorage.service=service;
+      $localStorage.instructions=instructions;
+
   };
 
   $scope.$watch('service_Select', function() {

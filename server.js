@@ -9,11 +9,10 @@ var expressSession=require('express-session');
 var bodyparser=require('body-parser');
 
 var app = express();
-var controlleri=require('./controllers/controller_2');
-var mongoose_controller=require('./controllers/mongoose_controller');
+
 var user_controller=require('./controllers/user_controller');
 var booking_controller=require('./controllers/booking_controller');
-var therapist_controller =require('./controllers/therapist_controller');
+
 var routes=require('./Routes/routes');
 var mongojs = require('mongojs');
 

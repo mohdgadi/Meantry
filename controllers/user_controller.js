@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
 
-var mongodbUri = 'mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish';
+var mongodbUri = 'mongodb://mohd:techmatters5@ds019633.mlab.com:19633/maalish2';
 mongoose.connect(mongodbUri, options);
 var conn = mongoose.connection;             
  
@@ -14,7 +14,7 @@ conn.once('open', function() {
   console.log("connected");                       
 });
 
-//mongoose.connect('mongodb://localhost:27017/hockey');
+mongoose.connect('mongodb://localhost:27017/hockey');
 
 var User= require('../models/user_model');
 

@@ -6,12 +6,9 @@ var passportLocal=require('passport-local').Strategy;
 var path = require('path');
 var expressSession=require('express-session');
 
-var controlleri=require('../controllers/controller_2');
-var mongoose_controller=require('../controllers/mongoose_controller');
 var user_controller=require('../controllers/user_controller');
 var booking_controller=require('../controllers/booking_controller');
 
-var therapist_controller =require('../controllers/therapist_controller');
 
 module.exports = (function() {
     'use strict';
@@ -20,12 +17,6 @@ module.exports = (function() {
     router.get('/', function(req, res) {
         res.send("Hello wrold");
     });
-
-    router.get('/therapist_data',mongoose_controller.finds);
-
-
-
-router.get('/era',controlleri.create);
 
 router.get('/login',function(req,res){
 	if(req.isAuthenticated() && req.user.type ){
@@ -87,9 +78,7 @@ router.get('/home',function(req,res){
 	
 });
 
-router.get('/therapist-select-days',function(req,res){
-	res.render('../client/views/therapist_days_select');
-});
+
 
 
 
@@ -104,7 +93,7 @@ router.get('/logout',function(req,res){
 	
 });
 
-router.post('/era',controlleri.book,booking_controller.book,function(req,res){
+router.post('/book',booking_controller.book,function(req,res){
 
 	res.writeHead(200, {'Content-Type': 'text/plain'});
 						  res.end('okay');
@@ -115,26 +104,19 @@ router.post('/era',controlleri.book,booking_controller.book,function(req,res){
 
 
 
-router.post('/ur-book',controlleri.book,booking_controller.bookur ,function(req,res){
+router.post('/ur-book',booking_controller.bookur ,function(req,res){
 
 	console.log("got post request");
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-						  res.end('okay');
-	
+		
 	console.log("done in server.js");
 });
 
 
 
-router.post('/therapist-register',therapist_controller.register);
 
   router.get('/api/booking/user',user_controller.getuser);
 
-  router.post('/api/mobile/try',controlleri.try,function(req,res){
-  	console.log("got request");
-  	 res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end('okay');
-  });
+
 
 router.get('/api/session_data',function(req,res){
 	if(req.isAuthenticated()){
@@ -153,29 +135,6 @@ router.get('/api/hello',function(req,res){
 });
 
 
-router.get('/api/get_booked_days',therapist_controller.get_booked_days);
-
-router.post('/api/therapist/book_days',controlleri.bookDates);
-
-router.post('/api/therapist-login',passport.authenticate('local2'),function(req,res){
-	 res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end('okay');
-});
-
-router.get('/api/therapist-home',function(req,res){
-	if(req.user && !req.user.type){
-		console.log("allowed");
-		res.send(req.user);
-		
-
-	}else{
-		console.log("not allowed");
-		res.send(401);
-	}
-});
-
-router.get('/api/therapist/all_bookings',therapist_controller.get_bookings);
-
 router.get('*', function (req, res) {
     // res.sendFile('./client/views/index.html');
     res.sendFile('/client/views/index.html', { root: 'C:/Users/mohd/Desktop/meantry3' });
@@ -185,3 +144,16 @@ router.get('*', function (req, res) {
 
     return router;
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+

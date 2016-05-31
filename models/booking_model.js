@@ -9,13 +9,13 @@ var BookingSchema = new Schema({
 	phone: String,
 	time : String,
 	date: String,
-	therapist_id: String,
 	total:Number,
 	service:String,
 	username:String,
 	email:String,
 	booking_date:String,
-	booking_time:String
+	booking_time:String,
+	instructions:String
 
 });
 

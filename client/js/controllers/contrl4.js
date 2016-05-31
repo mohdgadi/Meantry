@@ -5,7 +5,7 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
     $scope.service=$localStorage.service;
     $scope.times=$localStorage.time;
     $scope.dates=$localStorage.date;
-    $scope.therapist_name=$localStorage.therapist_name;
+    
 
 
     $scope.address_change=false;
