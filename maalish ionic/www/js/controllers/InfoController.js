@@ -6,7 +6,7 @@ app.controller('InfoController', [ '$scope' ,'$localStorage','$location', functi
 
 		if(username && name && phone && zip && address){
 		console.log("proper");
-		$localStorage.name=username;
+		$localStorage.email=username;
 		$localStorage.name=name;
 		$localStorage.phone=phone;
 		$localStorage.zip=zip;

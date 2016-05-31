@@ -110,6 +110,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
       }
     }
+  }).state('app.checkout', {
+    url: '/checkout',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/checkout.html',
+        controller: 'checkoutController'
+        
+      }
+    }
+  })
+  .state('app.trial', {
+    url: '/trial',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/trial.html',
+        controller: 'TrialController'
+        
+      }
+    }
   }).state('app.therapist', {
     url: '/therapist',
     views: {
@@ -117,29 +136,30 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/therapist.html',
         controller:'TherapistController'
       }
-    }
+    },resolve:{
 
+      List:function($state,$location,$http,$localStorage){
 
-  }).state('app.trial', {
-    url: '/trial',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/trial.html'
-      }
-    },
-    resolve:{
+            var times=$localStorage.time;
+            var dates=$localStorage.date;
 
-      check:function($state,$location){
-        if(checkRouting()){
-          console.log("yo");
-
-        }else{
-          console.log("false");
-          $location.url('/app/login');
-        }
+            var config2= {
+             params: { time: times,
+                  date:dates
+                }
+          };
+        return $http.get('http://localhost:9000/era',config2)
+        .then(function(response){
+        var data=response.data;
+        return data;
+          });
       }
     }
   });
+
+
+ 
+    
 
   
  
@@ -161,19 +181,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
 var checkRouting= function () {
     
         // var deferred = $q.defer();
+
+             $http({
+                        method : "GET",
+                        url : "welcome.htm"
+                    }).then(function mySucces(response) {
+                        return true;
+                    }, function myError(response) {
+                        return false;
+                    });
         
 
-             if(1==1){
+             // if(1==1){
+             //  return true;
+             // }else{
+             //  return false;
+             // }
               
               
-              return false;
+              
               // $state.go("app.login");
   
-             }else{
-                
-                return true;
-                  
-             }
+            
 
 
         // return deferred.promise();

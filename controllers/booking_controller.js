@@ -16,6 +16,8 @@ conn.once('open', function() {
 var Booking= require('../models/booking_model');
 var User= require('../models/user_model');
 
+
+
 module.exports.book = function (req,res,next) {
 
 	User.findOne({
@@ -48,10 +50,13 @@ module.exports.book = function (req,res,next) {
 				booking.save(function(err){
 					if(err){
 						console.log("error occured in book controller");
+						res.send(401);
 					}
 					else
 					{
 						console.log("booked succesfully bro!!!");
+						res.writeHead(200, {'Content-Type': 'text/plain'});
+						  res.end('okay');
 
 							next();
 					}
@@ -65,7 +70,10 @@ module.exports.book = function (req,res,next) {
 };
 
 
-module.exports.bookur = function (req,res) {
+
+
+
+module.exports.bookur = function (req,res,next) {
 
 	
 				var now = new Date();
@@ -91,11 +99,12 @@ module.exports.bookur = function (req,res) {
 				booking.save(function(err){
 					if(err){
 						console.log("error occured in book controller");
+						res.send(401);
 					}
 					else
 					{
 						console.log("booked succesfully bro!!!");
-
+						next();
 							
 					}
 				});

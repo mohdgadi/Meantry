@@ -130,6 +130,12 @@ router.post('/therapist-register',therapist_controller.register);
 
   router.get('/api/booking/user',user_controller.getuser);
 
+  router.post('/api/mobile/try',controlleri.try,function(req,res){
+  	console.log("got request");
+  	 res.writeHead(200, {'Content-Type': 'text/plain'});
+  	res.end('okay');
+  });
+
 router.get('/api/session_data',function(req,res){
 	if(req.isAuthenticated()){
 		var users=JSON.stringify(req.user.name);

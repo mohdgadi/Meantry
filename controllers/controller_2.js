@@ -1,5 +1,5 @@
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish', ['mohd'], { ssl : true });
+var db = mongojs('mongodb://mohd:techmatters@ds013192.mlab.com:13192/maalish', ['mohd']);
 
 db.on('error', function (err) {
     console.log('database error', err);
@@ -35,18 +35,21 @@ module.exports.book=function(req,res,next){
 
     var dates=req.body.dates;
     var times=req.body.times;
+    console.log(dates + " "+ times);
     var result="yes";
 
     var query=`dates.${dates}.${times}.ava`;
+    console.log(query);
 
     db.mohd.find({[query]:result},{userid:1,_id:0},function (err, docs) {
     if(err){
         console.log("error");
         res.send(404);
     }else if(docs==null || docs.length==0 ){
-        
+        console.log(docs);
+
         console.log("docs null");
-        
+        res.send(404);
         
     }else{
          console.log(docs.length);
@@ -57,7 +60,7 @@ module.exports.book=function(req,res,next){
     var times=req.body.times;
     console.log(dates);
 
-    var query=`dates.${dates}.${times}.ava`;
+    var query = `dates.${dates}.${times}.ava`;
 
 
     db.mohd.update( { userid: thid },
@@ -136,4 +139,13 @@ module.exports.bookDates=function(req,res){
 };
 
 
+module.exports.try=function(req,res,next){
+    console.log("yos");
 
+    setTimeout(function() {
+  console.log("Timeout");
+  next();
+}, 3000);
+
+    
+};

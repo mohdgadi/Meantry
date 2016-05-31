@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="../css/checkout.css">
+
+<ion-view view-title="checkout">
+
+
+<ion-content class="info2-content padding">
+
+	<h3>
+		Booking Summary
+	</h3>
+
+	<div class="list card">
+
+	  <div class="item item-avatar">
+	    <img src="http://tinyurl.com/gwz4a9a">
+	    <h2>{{service}}</h2>
+	    <p>{{date}}</p>
+	    <p>{{time}}</p>
+	  </div>
+	 </div>
+
+	  <div class="list card">
+		  <div class="item item-avatar">
+		    <img src="http://tinyurl.com/jbtnj8m">
+		    <h2>{{name}}</h2>
+		    <p>{{phone}}</p>
+		    <p>{{address}}</p>
+		  </div>
+
+  	   </div>
+
+  	   
+
+  	   <div class="list card">
+  	   	<div class="item item-avatar">
+  	   		<img src="http://tinyurl.com/jy82qya">
+  	   		<h2>{{therapist_name}}</h2>
+  	   		<table>
+  	   			<tr>
+  	   				<td>
+  	   					<p>Session Charge</p>
+  	   				</td>
+  	   				<td class="right">
+  	   					<p>$200</p>
+  	   				</td>
+  	   			</tr>
+
+  	   			<tr class="line">
+  	   				<td>
+  	   					<p>Therapist Tip</p>
+  	   				</td>
+  	   				<td class="right">
+  	   					<p>+$20</p>
+  	   				</td>
+  	   			</tr>
+
+  	   			<tr>
+  	   				<td>
+  	   					<p>Total</p>
+  	   				</td>
+  	   				<td class="right">
+  	   					<p>=$220</p>
+  	   				</td>
+  	   			</tr>
+
+  	   		</table>
+  	   		
+  	   		
+  	   		
+  	   	</div>
+  	   </div>
+
+  	   <label class="item">
+          <button ng-click="submit()" class="button button-block button-positive" type="submit">Book</button>
+        </label>
+
+
+	
+</ion-content>
+</ion-view>

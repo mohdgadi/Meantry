@@ -33,6 +33,8 @@ $http.get('/era',config2).success(function(response) {
 
  userid_list = st.map(function(item){ return item.userid; });
 
+ var final="Hey";
+
  $http.get('/therapist_data',config).success(function(response) {
     console.log("I got the data I requested");
     var resdata=response;
@@ -45,6 +47,7 @@ $http.get('/era',config2).success(function(response) {
 });
 
     $scope.therapist_list=newDataArray;
+    console.log(newDataArray);
   });
 
 

@@ -46,6 +46,14 @@ myapp.config(function($routeProvider, $locationProvider) {
     templateUrl: '../views/session-select.html',
     controller: 'session_select_controller',
     
+  })
+  .when('/booking-success', {
+    templateUrl: '../views/booking-success.html'
+    
+  })
+  .when('/booking-failure', {
+    templateUrl: '../views/booking-failure.html'
+    
   });
 
   // configure html5 to get links working on jsfiddle

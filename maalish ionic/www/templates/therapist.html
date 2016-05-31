@@ -29,12 +29,13 @@
   		</label>
 
 
-    <div ng-repeat="x in objects | filter: search | orderBy: therapistorder" >
-    <a class="item item-thumbnail-left" href="#">
-      <img ng-src={{x.img}}>
+    <div ng-repeat="x in therapist_list | filter: search | orderBy: therapistorder" >
+    <a ng-click="select(x.userid,x.name)" class="item item-thumbnail-left item-icon-right" href="#">
+      <img ng-src="https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/matthew.png">
       <h2>{{x.name}}</h2>
       <p> <b>Price : </b>{{x.price}}₹<br/></p>
       <p> <b>Ratings : </b>{{x.ratings}}(684) </p>
+      <i class="icon ion-chevron-right"></i>
     </a>
     </div>
    

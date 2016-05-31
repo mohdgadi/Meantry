@@ -1,34 +1,35 @@
-app.controller('TherapistController', [ '$scope' ,'$localStorage','$location', function($scope,$localStorage,$location) {
+app.controller('TherapistController', [ 'List','$scope' ,'$localStorage','$location','$http', function(List,$scope,$localStorage,$location,$http) {
 
-	$scope.objects=[
-	{
-		name:"Mohammed Gadiwala",
-		img:"http://findicons.com/files/icons/1072/face_avatars/300/a02.png",
-		price:"400",
-		ratings:"4.3"
-	},
-	{
-		name:"Hrushikesh",
-		img:"http://findicons.com/files/icons/1072/face_avatars/300/a02.png",
-		price:"500",
-		ratings:"3.3"
-	},
-	{
+	var data=List;
+	var userid_list = data.map(function(item){ return item.userid; });
+            console.log(userid_list);
+          var service=$localStorage.service;
+          var config= {
+                       params: { service_type:service
+                          }
+                      };
 
-		name:"Amol Gopale",
-		img:"http://findicons.com/files/icons/1072/face_avatars/300/a02.png",
-		price:"1000",
-		ratings:"1.3"
-	},
-	{
-		name:"Virat Kohli",
-		img:"http://findicons.com/files/icons/1072/face_avatars/300/a02.png",
-		price:"300",
-		ratings:"5.0"
-	}
+                   $http.get('http://localhost:9000/therapist_data',config).success(function(response) {
+                      console.log("I got the data I requested");
+
+                      var newDataArray = response.filter(function (item) {
+                      return userid_list.indexOf(item.userid) !== -1;
+                    });
+                	
+                	$scope.therapist_list=newDataArray;
+    				console.log(newDataArray);
+                    });
 
 
-	];
+           $scope.select=function(id,name){
 
+           	
+           		$localStorage.therapist_id=id;
+           		$localStorage.therapist_name=name;
+           		$location.url('/app/checkout');
+           };
+
+                    
+             
 
 }]);

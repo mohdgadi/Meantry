@@ -1,0 +1,20 @@
+h3{
+	text-align: center;
+}
+#total{
+	text-align: right;
+}
+.line{
+	border-bottom: 1px solid black;
+}
+.left{
+	text-align: right;
+}
+table{
+	width: 100%;
+	margin-top: 10px;
+	
+}
+tr{
+	margin-top: 5px;
+}

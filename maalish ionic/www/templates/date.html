@@ -27,7 +27,7 @@
 
 		    <select ng-model="time">
 		      
-		      <option value="9/10" selected>9AM-10AM</option>
+		      <option value="9/10">9AM-10AM</option>
 		      <option value="10/11">10AM-11AM</option>
 		      <option value="11/12">11AM-12PM</option>
 		      <option value="12/13">12PM-1PM</option>
@@ -38,7 +38,7 @@
 	   
 
 	    <div class="date-button">
-		  	<a href="#/app/info"><button ng-click="date_Proceed()" class="button button-full button-positive">
+		  	<a href="#/app/info"><button ng-click="date_Proceed(date,time)" class="button button-full button-positive">
 			  Proceed
 			</button>
 		 </div>
