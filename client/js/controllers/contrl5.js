@@ -25,11 +25,12 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
               var instructions=$localStorage.instructions;
                 console.log("got service");
 
-                if($localStorage.time&&$localStorage.date){
+                if($localStorage.time&&$localStorage.date&&$localStorage.duration){
 
                   console.log("got time");
                   var time=$localStorage.time;
                   var date=$localStorage.date;
+                  var duration=$localStorage.duration;
                   $scope.times=$localStorage.time;
                   $scope.dates=$localStorage.date;
 
@@ -39,7 +40,9 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                 dates:date,
                                 times:time,
                                 address:address,
-                                service:service
+                                service:service,
+                                duration:duration,
+                                instructions:instructions
                                 };
 
                      $http.post('/book', data)
@@ -130,10 +133,11 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                 var service=$localStorage.service;
                 var instructions=$localStorage.instructions;
 
-                if($localStorage.time&&$localStorage.date){
+                if($localStorage.time&&$localStorage.date&&$localStorage.duration){
 
                   var time=$localStorage.time;
                   var date=$localStorage.date;
+                  var duration=$localStorage.duration;
                   $scope.times=$localStorage.time;
                   $scope.dates=$localStorage.date;
                   console.log("got date and time");
@@ -150,7 +154,8 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                 name:name,
                                 email:email,
                                 phone:phone,
-                                instructions:instructions
+                                instructions:instructions,
+                                duration:duration
                                 };
 
 

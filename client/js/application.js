@@ -54,6 +54,9 @@ myapp.config(function($routeProvider, $locationProvider) {
   .when('/booking-failure', {
     templateUrl: '../views/booking-failure.html'
     
+  }).when('/form-eg', {
+    templateUrl: '../views/form-eg.html'
+    
   });
 
   // configure html5 to get links working on jsfiddle

@@ -46,7 +46,8 @@ module.exports.book = function (req,res,next) {
 					
 					booking_date:sbooking_date,
 					booking_time:sbooking_time,
-					instructions:req.body.instructions
+					instructions:req.body.instructions,
+					duration:req.body.duration
 				});
 
 				booking.save(function(err){
@@ -96,7 +97,8 @@ module.exports.bookur = function (req,res,next) {
 					email:req.body.email,
 					booking_date:sbooking_date,
 					booking_time:sbooking_time,
-					instructions:req.body.instructions
+					instructions:req.body.instructions,
+					duration:req.body.duration
 				});
 
 				booking.save(function(err){

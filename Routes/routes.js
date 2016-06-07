@@ -8,6 +8,7 @@ var expressSession=require('express-session');
 
 var user_controller=require('../controllers/user_controller');
 var booking_controller=require('../controllers/booking_controller');
+var payment_controller=require('../controllers/payment-controller');
 
 
 module.exports = (function() {
@@ -134,11 +135,44 @@ router.get('/api/hello',function(req,res){
 	res.send("yo");
 });
 
+router.post('/post-form',function(req,res){
+	console.log("got request");
+	console.log(req.body);
+});
+
+
+
+
+
+
+router.get('/payment',function(req,res){
+	var MERCHANT_KEY = "gtKFFx";
+	var url="";
+	var form_error=0;
+	var hash="";
+	var txnid="171300fe037cbd2da927ca8b8fbfa743f12865c2ba36461e16b1d381295b0f46";
+	var should_load="false";	
+	res.render('../client/views/payment',{
+		MERCHANT_KEY:MERCHANT_KEY,url:url,form_error:form_error,hash:hash,txnid:txnid,amount:'',name:'',email:'',phone:'',productinfo:'',surl:'',furl:'',hashs:hash,ers:"get"
+	});
+});
+
+
+
+router.post('/payment',payment_controller.post);
+
+
+
+router.get('/datepick',function(req,res){
+	res.sendFile('/client/views/datepick.html',{ root: 'C:/Users/mohd/Desktop/meantry3' });
+});
+
 
 router.get('*', function (req, res) {
     // res.sendFile('./client/views/index.html');
     res.sendFile('/client/views/index.html', { root: 'C:/Users/mohd/Desktop/meantry3' });
 });
+
 
 
 

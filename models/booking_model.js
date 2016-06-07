@@ -15,7 +15,8 @@ var BookingSchema = new Schema({
 	email:String,
 	booking_date:String,
 	booking_time:String,
-	instructions:String
+	instructions:String,
+	duration:String
 
 });
 

@@ -42,8 +42,15 @@
     
     </div>    <br/><br/>
 
+     <label for="durationSelect"> Select Massage Duration</label><br>
+     <select class="dropdown" ng-model="duration" name="durationSelect">
+          <option value="60">60 Mins</option>
+            <option value="90">90 Mins</option>
+            <option value="120">120 Mins</option>
+     </select><br/><br/>
 
-      	<label for="singleSelect"> Select time </label><br>
+
+      	<label for="singleSelect"> Select time Time Slot To start massage</label><br>
     		<select class="dropdown" nAMe="singleSelect" ng-model="timeSelect">
      			 <option value="9/10">9AM-10AM</option>
       			<option value="10/11">10AM-11AM</option>
@@ -52,7 +59,7 @@
       			<option value="13/14">1PM-2PM</option>
 
    			 </select><br/><br/>
-   			 <a href="/user_info"><button class="btn btn-success" ng-click="check()">Proceed!</button><br></a>
+   			 <a href="/user_info"><button class="btn btn-success" ng-click="check(duration)">Proceed!</button><br></a>
    			 Selected Time = {{timeSelect}}
    			 <br/><br/>
    			<br/>

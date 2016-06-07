@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+</head>
+
+
+
+	<body ng-app="myApp">
+ 		<div class="datepickerdemoBasicUsage" ng-controller="AppCtrl" style='padding: 40px;' ng-cloak>
+  <md-content>
+
+
+    <h4>Standard date-picker</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+    
+    <h4>Date-picker with min date and max date</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+    
+    <h4>Opening the calendar when the input is focused</h4>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+      md-open-on-focus></md-datepicker>
+    <h4>With ngMessages</h4>
+
+
+    <form name="myForm">
+
+
+      <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
+          required md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+
+      <div class="validation-messages" ng-messages="myForm.dateField.$error">
+        
+        <div ng-message="required">This date is required!</div>
+        <div ng-message="mindate">Date is too early!</div>
+        <div ng-message="maxdate">Date is too late!</div>
+        
+      </div>
+    </form>
+
+
+  </md-content>
+</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<script>
+ 
+		// Include app dependency on ngMaterial 
+
+angular.module('myApp',
+    ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
+
+
+  $scope.myDate = new Date();
+
+
+  $scope.minDate = new Date();
+  $scope.maxDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() + 1,
+      $scope.myDate.getDate());
+  $scope.onlyWeekendsPredicate = function(date) {
+    var day = date.getDay();
+    return day === 0 || day === 6;
+  };
+});
+ 
+	</script> 
+
+	<style type="text/css">
+		.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 12px;
+    color: #dd2c00;
+    margin: 10px 0 0 25px; }
+	</style>
+ 
+</body>
+</html>
