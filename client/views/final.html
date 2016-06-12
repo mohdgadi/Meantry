@@ -1,0 +1,85 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./stylesheets/final.css">
+
+
+
+
+
+<div class="container" >
+
+
+	<div ng-if="!details" class="loading">
+		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	</div>
+
+
+
+
+
+	<div class="details" ng-if="details">
+		<form action="https://test.payu.in/_payment" method="post" name="payuForm">
+      <input  ng-model="key" name="key"  />
+      <input  ng-model="hash" name="hash"/>
+      <input  ng-model="txnid" name="txnid" />
+      <input  ng-model="authentication" name="udf5" />
+      <table>
+        <tr>
+          <td><b>Mandatory Parameters</b></td>
+        </tr>
+        <tr>
+          <td>Amount: </td>
+          <td><input ng-model="amount" name="amount"  /></td>
+          <td>First Name: </td>
+          <td><input ng-model="name" name="firstname" id=""  /></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><input ng-model="email" name="email" id="email" /></td>
+          <td>Phone: </td>
+          <td><input ng-model="phone" name="phone" /></td>
+        </tr>
+        <tr>
+        	<td>Address: </td>
+          <td><input ng-model="address" name="address1" /></td>
+          <td>Date </td>
+          <td><input ng-model="date" name="udf4" /></td>
+        </tr>
+        <tr>
+          <td>Time: </td>
+          <td><input ng-model="time" name="udf1"  /></td>
+          <td>Duration </td>
+          <td><input ng-model="duration" name="udf2" /></td>
+        </tr>
+        <tr>
+        	<td>Instructions </td>
+          <td><input ng-model="instructions" name="udf3" /></td>
+        </tr>
+        <tr>
+          <td>Product Info: </td>
+          <td colspan="3"><textarea ng-model="info" name="productinfo"></textarea></td>
+        </tr>
+        <tr>
+          <td>Success URI: </td>
+          <td colspan="3"><input ng-model="surl" name="surl"  size="64" /></td>
+        </tr>
+        <tr>
+          <td>Failure URI: </td>
+          <td colspan="3"><input ng-model="furl" name="furl"  size="64" /></td>
+        </tr>
+        <tr>
+          <td colspan="4"><input type="submit" value="Submit" /></td>
+        </tr>
+
+       
+
+        
+
+        
+		
+      </table>
+    </form>
+
+
+
+	</div>
+</div>

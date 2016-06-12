@@ -121,4 +121,59 @@ module.exports.bookur = function (req,res,next) {
 
 
 
+
+module.exports.book1 = function (data){
+
+		var username;
+		console.log("gotyos");
+		var now = new Date();
+
+				var sbooking_date= dateFormat(now, "dd/mm/yy");
+				var sbooking_time=dateFormat(now,"hh:MM:ss");
+
+				if(data.udf5=='false'){
+					username=null;
+				}else{
+					username=data.email;
+				}
+
+				var booking=new Booking({
+					username:username,
+					phone:data.phone,
+					name:data.firstname,
+					address:data.address1,
+					service:data.productinfo,
+					time:data.udf1,
+					date:data.udf4,
+					email:data.email,
+					booking_date:sbooking_date,
+					booking_time:sbooking_time,
+					instructions:data.udf3,
+					duration:data.udf2,
+					payuid:data.mihpayid,
+					txnid:data.txnid
+				});
+
+				booking.save(function(err){
+					if(err){
+						console.log("error occured in book controller");
+						
+					}
+					else
+					{
+						console.log("booked succesfully bro!!!");
+						
+							
+					}
+				});
+
+
+
+
+};
+
+
+
+
+
 	

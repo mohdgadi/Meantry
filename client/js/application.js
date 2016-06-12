@@ -1,4 +1,4 @@
-var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate']);
+var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate','ngMaterial']);
 
 
 myapp.config(function($routeProvider, $locationProvider) {
@@ -54,8 +54,9 @@ myapp.config(function($routeProvider, $locationProvider) {
   .when('/booking-failure', {
     templateUrl: '../views/booking-failure.html'
     
-  }).when('/form-eg', {
-    templateUrl: '../views/form-eg.html'
+  }).when('/final', {
+    templateUrl: '../views/final.html',
+    controller:'checkoutController'
     
   });
 

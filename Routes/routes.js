@@ -135,10 +135,7 @@ router.get('/api/hello',function(req,res){
 	res.send("yo");
 });
 
-router.post('/post-form',function(req,res){
-	console.log("got request");
-	console.log(req.body);
-});
+
 
 
 
@@ -159,12 +156,26 @@ router.get('/payment',function(req,res){
 
 
 
-router.post('/payment',payment_controller.post);
+
 
 
 
 router.get('/datepick',function(req,res){
 	res.sendFile('/client/views/datepick.html',{ root: 'C:/Users/mohd/Desktop/meantry3' });
+});
+
+router.get('/api/finalr',payment_controller.getinfor);
+router.get('/api/finalur',payment_controller.getinfour);
+
+router.post('/api/successful',function(req,res){
+	console.log("GOT REQUEST");
+	console.log(req.body);
+
+});
+
+router.post('/payment-success',payment_controller.payment_success);
+router.post('/payment-failure',function(req,res){
+	console.log("Got failure request");
 });
 
 

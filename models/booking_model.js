@@ -4,6 +4,8 @@ var ObjectId = Schema.Types.ObjectId;
 var BookingSchema = new Schema({
 
 	bookingid:ObjectId,
+	payuid:String,
+	txnid:String,
 	name:  String,
 	address:String,
 	phone: String,

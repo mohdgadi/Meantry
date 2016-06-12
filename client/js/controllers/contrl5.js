@@ -180,7 +180,7 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                                delete $localStorage.time;
                                delete $localStorage.date;
                                
-                                                              $window.location.href = '/booking-failure';
+                                  $window.location.href = '/booking-failure';
                              }
                           );
 

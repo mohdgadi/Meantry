@@ -76,7 +76,7 @@ $http.get('/era',config2).success(function(response) {
       $localStorage.therapist_id=id;
       $localStorage.therapist_name=name;
       console.log(name);
-}
+};
 
    
     

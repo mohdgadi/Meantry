@@ -14,7 +14,7 @@ conn.once('open', function() {
   console.log("connected");                       
 });
 
-mongoose.connect('mongodb://localhost:27017/hockey');
+
 
 var User= require('../models/user_model');
 
@@ -124,3 +124,24 @@ module.exports.register = function (req,res) {
 		}
 
 	};
+
+module.exports.returnuser=function(req){
+	
+	if(req.user){
+
+		User.findOne({
+			'username':[req.user.id],
+		},'address name phone age username',function(err,user){
+			if(!user){
+				console.log("logged err");
+				return null;
+				
+			}else{
+				console.log("login in");
+				return user;
+				
+			}
+			
+		});
+	}
+};
