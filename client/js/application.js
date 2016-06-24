@@ -1,4 +1,4 @@
-var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate','ngMaterial']);
+var myapp=angular.module('myApp', ['ngRoute','ngStorage','pickadate','ngMaterial','angularCSS']);
 
 
 myapp.config(function($routeProvider, $locationProvider) {
@@ -6,41 +6,32 @@ myapp.config(function($routeProvider, $locationProvider) {
    .when('/date-select', {
     templateUrl: '../views/date-select.html',
     controller: 'contrl1',
+     css: {
+        href: './stylesheets/date_select.css'
+      },
   })
-  .when('/therapist-select', {
-    templateUrl: '../views/therapist-select.html',
-    controller: 'contrl2',
-    
-  })
-  .when('/service_type', {
+  
+  .when('/service-type', {
     templateUrl: '../views/service_type.html',
     controller: 'contrl3',
+    css: {
+        href: './stylesheets/service.css'
+      },
     
   })
-  .when('/user_info', {
+  .when('/user-info', {
     templateUrl: '../views/user-info.html',
     controller: 'contrl4',
+    css: {
+        href: './stylesheets/user-info.css'
+      },
     
-  }).when('/checkout', {
-    templateUrl: '../views/checkout.html',
+  }).when('/summary', {
+    templateUrl: '../views/summary.html',
     controller: 'contrl5',
-    
-  }).when('/test_login', {
-    template: 'Hello',
-    controller: 'contrl6',
-    
-  })
-  .when('/therapist-register', {
-    templateUrl: '../views/therapist_register.html',
-    controller: 'therapist_register_controller',
-    
-  }).when('/therapist-login', {
-    templateUrl: '../views/therapist_login.html',
-    controller: 'therapist_login_controller',
-    
-  }).when('/therapist-home', {
-    templateUrl: '../views/therapist_home.html',
-    controller: 'therapist_home_controller',
+    css: {
+        href: './stylesheets/summary.css'
+      },
     
   }).when('/session-select', {
     templateUrl: '../views/session-select.html',
@@ -54,9 +45,13 @@ myapp.config(function($routeProvider, $locationProvider) {
   .when('/booking-failure', {
     templateUrl: '../views/booking-failure.html'
     
-  }).when('/final', {
-    templateUrl: '../views/final.html',
-    controller:'checkoutController'
+  }).when('/checkout', {
+    templateUrl: '../views/checkout.html',
+    controller:'checkoutController',
+    css: {
+        href: './stylesheets/checkout.css'
+      },
+
     
   });
 

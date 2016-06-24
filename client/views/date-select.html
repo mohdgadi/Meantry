@@ -1,75 +1,130 @@
-
-
 <!DOCTYPE html>
-      
-      <link rel="stylesheet" href="./stylesheets/date_select.css">
-       <link rel="stylesheet" type="text/css" href="./stylesheets/angular-pickadate.css" />
+<html>
+<head>
+	<title>Maalish-Select Date</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+</head>
+<body>
+
+	<div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 logo">
+		<img src="./images/maalish-logo.png" class="img-responsive">
+	</div>
+
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+		<table width="100%">
+			<tr class="topnav">
+			  <td width="14.2%"><a class="active" href="#home">Get a Massage</a></td>
+			  <td width="14.2%"><a href="#news">How It Works</a></td>
+			  <td width="14.2%"><a href="#contact">Membership</a></td>
+	   		  <td width="14.2%"><a href="#contact">Signin</a></td>
+	   		  <td width="14.2%"><a href="#contact">Faq</a></td>
+	     	  <td width="14.2%"><a href="#contact">Contact</a></td>
+	 
+	  		  <td width=14.2% class="icon">
+	    			<a href="javascript:void(0);" style="font-size:14px;" onclick="myFunction()">☰</a>
+	 		  </td>
 
 
-        <div class="navbar ">
-      <div class="nav">
-         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <table>
-
-              <tr>
-                <td width="50%">
-                  <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg">
-                </td>
-                <td>
-                  
-                </td>
-              </tr>
-
-              <tr width="50%">
-                <td>{{service}}</td>
-              </tr>
-            </table>
-         </div>
-      </div>
-      </div>
-   
+			</tr>
+		</table>
 
 
+	</div>
 
-        <div class="container">
-      	<label for="singleSelect"><h3>Please Select a Date </h3></label><br>
-    		
-
-         <div class="calender"  pickadate  ng-model="date"  select-other-months="next" no-extra-rows  min-date="minDate" max-date="maxDate" ng-model="date"  format="dd/mm/yyyy"  >
-    <div class="selected-date">
-        Selected date is {{date || '(no date selected)'}}
-      </div><br/>
-    
-    </div>    <br/><br/>
-
-     <label for="durationSelect"> Select Massage Duration</label><br>
-     <select class="dropdown" ng-model="duration" name="durationSelect">
-          <option value="60">60 Mins</option>
-            <option value="90">90 Mins</option>
-            <option value="120">120 Mins</option>
-     </select><br/><br/>
+	</div>
 
 
-      	<label for="singleSelect"> Select time Time Slot To start massage</label><br>
-    		<select class="dropdown" nAMe="singleSelect" ng-model="timeSelect">
-     			 <option value="9/10">9AM-10AM</option>
-      			<option value="10/11">10AM-11AM</option>
-      			<option value="11/12">11AM-12PM</option>
-      			<option value="12/13">12PM-1PM</option>
-      			<option value="13/14">1PM-2PM</option>
+	<div class="container content">
 
-   			 </select><br/><br/>
-   			 <a href="/user_info"><button class="btn btn-success" ng-click="check(duration)">Proceed!</button><br></a>
-   			 Selected Time = {{timeSelect}}
-   			 <br/><br/>
-   			<br/>
-   			 <br/>
-   			 
+		<div class="col-lg-9  col-md-9 col-sm-9 col-xs-12 col-lg-offset-3 col-xs-offset-0 col-md-offset-3 col-sm-offset-3">
 
-   			 
+		<div class="steps col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<table width="100%">
+				<tr class="steps-row">
+					<td width="25%">
+						<img src="./images/1-off.png" class="img-responsive">
+						<span class="steps-info">Customize Massage</span>
+					</td>
+					<td>
+						<img src="./images/2-off.png" class="img-responsive">
+						<span class="steps-info">Choose date</span>
+					</td>
+					<td>
+						<img src="./images/3-on.png" class="img-responsive">
+						<span class="steps-info">Contact Info</span>
+					</td>
+					<td>
+						<img src="./images/4-on.png" class="img-responsive">
+						<span class="steps-info">Summary</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="heading">
+				CHOOSE A DATE
+		</div>
 
-      
-      </div>
+		<div class="form">
 
-      
+			<label for="date">Pick a date</label><br/>
+			<md-content>
 
+			<form name="myForm">
+
+
+		      <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
+		          required md-min-date="minDate" md-max-date="maxDate"  md-open-on-focus></md-datepicker>
+
+		      
+
+		      
+		    </form>
+		    
+			</md-content>
+
+
+
+			<label for="time">Time to start</label><br/>
+
+			<select  nAMe="time" ng-model="timeSelect">
+     			<option value="9">9AM</option>
+      			<option value="10">10AM</option>
+      			<option value="11">11AM</option>
+      			<option value="12">12PM</option>
+      			<option value="13">1PM</option>
+
+   			 </select><br/>
+
+			<label for="duration">Select Duration</label><br/>
+
+			<select  ng-model="duration" name="duration">
+         		<option value="60">60 Mins</option>
+	            <option value="90">90 Mins</option>
+	            <option value="120">120 Mins</option>
+    		 </select>	<br/>
+
+    		 <div ng-if="error">
+                <span style="color: red;">{{error_message}}</span>
+              </div><br/>
+
+			
+
+			<div class="button" ng-click="check(duration,myDate,timeSelect,myForm)">
+					CONTINUE
+			</div>
+		</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

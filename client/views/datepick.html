@@ -13,20 +13,11 @@
 
 
 	<body ng-app="myApp">
- 		<div class="datepickerdemoBasicUsage" ng-controller="AppCtrl" style='padding: 40px;' ng-cloak>
+ 		<div  ng-controller="AppCtrl" 
   <md-content>
 
 
-    <h4>Standard date-picker</h4>
-    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
     
-    <h4>Date-picker with min date and max date</h4>
-    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
-        md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
-    
-    <h4>Opening the calendar when the input is focused</h4>
-    <md-datepicker ng-model="myDate" md-placeholder="Enter date"
-      md-open-on-focus></md-datepicker>
     <h4>With ngMessages</h4>
 
 
@@ -34,22 +25,22 @@
 
 
       <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date"
-          required md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+          required md-min-date="minDate" md-max-date="maxDate"  md-open-on-focus></md-datepicker>
 
       <div class="validation-messages" ng-messages="myForm.dateField.$error">
         
         <div ng-message="required">This date is required!</div>
         <div ng-message="mindate">Date is too early!</div>
         <div ng-message="maxdate">Date is too late!</div>
+        <div ng-message="valid">The entered value is not a date!</div>
         
       </div>
+
+      {{myForm.dateField.$error}}
     </form>
 
 
-    <md-progress-circular md-mode="determinate" value="..."></md-progress-circular>
-<md-progress-circular md-mode="determinate" ng-value="..."></md-progress-circular>
-<md-progress-circular md-mode="determinate" value="..." md-diameter="100"></md-progress-circular>
-<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <button ng-click="check(myForm.dateField.$error)">Click</button>
 
 
   </md-content>
@@ -88,10 +79,17 @@ angular.module('myApp',
       $scope.myDate.getFullYear(),
       $scope.myDate.getMonth() + 1,
       $scope.myDate.getDate());
-  $scope.onlyWeekendsPredicate = function(date) {
-    var day = date.getDay();
-    return day === 0 || day === 6;
+
+  $scope.check=function(data){
+
+    if(data==""){
+
+      console.log("data"+data);
+    }else{
+      console.log(data);
+    }
   };
+
 });
  
 	</script> 

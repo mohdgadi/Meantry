@@ -1,5 +1,5 @@
-myapp.controller('contrl3', ['$scope' ,'$localStorage','$http',
-  function ($scope,  $localStorage,$http) {
+myapp.controller('contrl3', ['$scope' ,'$localStorage','$http','$location',
+  function ($scope,  $localStorage,$http,$location) {
 
     
 
@@ -11,19 +11,38 @@ myapp.controller('contrl3', ['$scope' ,'$localStorage','$http',
 
   	$scope.images=["./images/personal-training.jpg","./images/Sport_massage.jpg","./images/aurvedic.jpg","./images/pilates.png"];
 
+    $scope.error=false;
+
     if($localStorage.service){
       $scope.service_Select=$localStorage.service;
+    }
+    if($localStorage.instructions){
+      $scope.instructions=$localStorage.instructions;
     }
 
 
     $scope.message=$scope.service_Select;
     changeData();
 
-  $scope.select = function (instructions) {
-      var service=$scope.service_Select;
-      console.log(service);
-      $localStorage.service=service;
-      $localStorage.instructions=instructions;
+  $scope.select = function (instructions,serviceSelect) {
+      var service=serviceSelect;
+      if(service && service!=='' ){
+        if(instructions && instructions!==''){
+          console.log(service);
+           $localStorage.service=service;
+            $localStorage.instructions=instructions;
+            $location.path('/date-select');
+        }else{
+          console.log("missing instructions");
+          $scope.error=true;
+          $scope.error_message="Please Fill in instructions";
+        }
+      }else{
+        $scope.error=true;
+          $scope.error_message="Please Select the Service";
+         console.log("null");
+      }
+      
 
   };
 

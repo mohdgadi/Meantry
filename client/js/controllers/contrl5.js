@@ -31,45 +31,14 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                   var time=$localStorage.time;
                   var date=$localStorage.date;
                   var duration=$localStorage.duration;
+                  $scope.duration=duration;
                   $scope.times=$localStorage.time;
                   $scope.dates=$localStorage.date;
 
                     $scope.book=function(){
 
-                    var data={
-                                dates:date,
-                                times:time,
-                                address:address,
-                                service:service,
-                                duration:duration,
-                                instructions:instructions
-                                };
-
-                     $http.post('/book', data)
-                         .then(
-                             function(response){
-                               // success callback
-                               console.log("posted successfully");
-                               $scope.summary="";
-                               $scope.booking_message="Booked successfully";
-                               delete $localStorage.time;
-                               delete $localStorage.date;
-                              
-                               
-                               $window.location.href = '/booking-success';
-                                
-                             }, 
-                             function(response){
-                              console.log("eroro ocured");
-                              delete $localStorage.time;
-                               delete $localStorage.date;
-                               
-                               
-                              $window.location.href = '/booking-failure';
-                             }
-                          );
-
-                         
+                    
+                          $window.location.href = '/final';
                         
                        };
 
@@ -139,52 +108,16 @@ myapp.controller('contrl5', ['$scope' ,'$localStorage','$http', '$window',
                   var date=$localStorage.date;
                   var duration=$localStorage.duration;
                   $scope.times=$localStorage.time;
+                  $scope.duration=duration;
                   $scope.dates=$localStorage.date;
                   console.log("got date and time");
 
                  
                      $scope.book=function(){
 
-                    var data={
-                                
-                                dates:date,
-                                times:time,
-                                address:address,
-                                service:service,
-                                name:name,
-                                email:email,
-                                phone:phone,
-                                instructions:instructions,
-                                duration:duration
-                                };
+                    
 
-
-
-                     $http.post('/ur-book', data)
-                         .then(
-                             function(response){
-                               // success callback
-                               console.log("posted successfully");
-                               $scope.summary="";
-                               $scope.booking_message="Booked successfully";
-                               delete $localStorage.time;
-                               delete $localStorage.date;
-                               
-                               $window.location.href = '/booking-success';
-
-                             
-                             }, 
-                             function(response){
-                               // failure callbac
-                               console.log("Error occurred");
-                               delete $localStorage.time;
-                               delete $localStorage.date;
-                               
-                                  $window.location.href = '/booking-failure';
-                             }
-                          );
-
-
+                               $window.location.href = '/final';
 
                               };
 

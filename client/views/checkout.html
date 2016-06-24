@@ -1,62 +1,98 @@
-<div class="container" >
-	<link rel="stylesheet" href="./stylesheets/checkout.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maalish</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+</head>
+<body>
 
+	<div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
 
-<div class="navbar ">
-      <div class="nav">
-         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table width="100%">
-
-              <tr>
-                <td width="33%">
-                  <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg">
-                </td>
-                <td width="33%">
-                  <img class="img-responsive" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-128.png">
-                </td>
-                
-                <td>
-                	<img src="http://freeflaticons.com/wp-content/uploads/2014/09/gps-home-map-navigation-network-pin-place-technology-web-icon-icon-search-engine-iconfinder-1410159985k8gn4.png" 
-                	class="img-responsive">
-                </td>
-              </tr>
-
-              <tr >
-                <td>{{service}}</td>
-                <td>Time:{{times}},Date:{{dates}}</td>
-                
-                <td>{{address}}</td>
-              </tr>
-            </table>
-
-         </div>
-      </div>
-      </div>
-
-
-
-
-
-<div class="container" id="content">
-
-	<div class="heading">
-		Checkout
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 logo">
+		<img src="images/maalish-logo.png" class="img-responsive">
 	</div>
 
-	<div ng-if="got_data" ng-model="summary">
-		Name:{{name}}<br/>
-		Email:{{email}}<br/>
-		Phone:{{phone}}<br/>
-		Date:{{date}}<br/>
-		Time:{{time}}<br/>
-		Service:{{service}}<br/>
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+		<table width="100%">
+			<tr class="topnav">
+			  <td width="14.2%"><a class="active" href="#home">Get a Massage</a></td>
+			  <td width="14.2%"><a href="#news">How It Works</a></td>
+			  <td width="14.2%"><a href="#contact">Membership</a></td>
+	   		  <td width="14.2%"><a href="#contact">Signin</a></td>
+	   		  <td width="14.2%"><a href="#contact">Faq</a></td>
+	     	  <td width="14.2%"><a href="#contact">Contact</a></td>
+	 
+	  		  <td width=14.2% class="icon">
+	    			<a href="javascript:void(0);" style="font-size:14px;" onclick="myFunction()">☰</a>
+	 		  </td>
+
+
+			</tr>
+		</table>
+
+
+	</div>
+
+	</div>
+
+
+	<div class="container content">
+
+		<div class="col-lg-9  col-md-9 col-sm-9 col-xs-12 col-lg-offset-3 col-xs-offset-0 col-md-offset-3 col-sm-offset-3">
+
 		
-		<br/>
+		
+		<div class="heading">
+				CHECKOUT
+		</div>
 
-			<button class="btn btn-danger" ng-click="book()">Proceed and Book</button><br/><br/>
+		<div ng-if="!details" class="loading">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
 
-			 {{booking_message}}
+		<div class="form" ng-if="details">
+			<form action="https://test.payu.in/_payment" method="post" name="payuForm">
+
+				<input id="input-hidden" ng-model="key" name="key"  />
+			    <input id="input-hidden" ng-model="hash" name="hash"/>
+			    <input id="input-hidden" ng-model="txnid" name="txnid" />
+			    <input id="input-hidden" ng-model="authentication" name="udf5" />
+			    <input id="input-hidden" ng-model="instructions" name="udf3">
+			    <input id="input-hidden"	ng-model="date" name="udf4">
+			    <input id="input-hidden"	ng-model="time" name="udf1">
+			    <input id="input-hidden"	ng-model="duration" name="udf2">
+			    
+			    <input id="input-hidden"	ng-model="info" name="productinfo">
+			    <input id="input-hidden"	ng-model="surl" name="surl">
+			    <input id="input-hidden"	ng-model="furl" name="furl">
+
+				<label for="firstname">Name</label><br/>
+				<input type="text" name="firstname" ng-model="name" readonly><br/>
+
+				<label for="email">Email</label><br/>
+				<input type="text" name="email" ng-model="email" readonly><br/>
+
+				<label for="phone">Phone</label><br/>
+				<input  name="phone" ng-model="phone" readonly><br/>
+
+				<label for="address">Address</label><br/>
+				<textarea placeholder="Address" name="address" ng-model="address" readonly></textarea><br/>
+
+				<label for="amount">Amount</label><br/>
+				<input  name="amount" ng-model="amount" readonly><br/>
+				
+
+				<input class="button" type="submit" value="Pay Now" />
+
+			</form>
+		</div>
+
+		</div>
+
 	</div>
 
-
-</div>
+</body>
+</html>

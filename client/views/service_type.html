@@ -1,57 +1,113 @@
- 	
- 	<link rel="stylesheet" href="./stylesheets/service.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maalish</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+</head>
+<body>
+
+	<div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 logo">
+		<img src="./images/maalish-logo.png" class="img-responsive">
+	</div>
+
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+		<table width="100%">
+			<tr class="topnav">
+			  <td width="14.2%"><a class="active" href="#home">Get a Massage</a></td>
+			  <td width="14.2%"><a href="#news">How It Works</a></td>
+			  <td width="14.2%"><a href="#contact">Membership</a></td>
+	   		  <td width="14.2%"><a href="#contact">Signin</a></td>
+	   		  <td width="14.2%"><a href="#contact">Faq</a></td>
+	     	  <td width="14.2%"><a href="#contact">Contact</a></td>
+	 
+	  		  <td width=14.2% class="icon">
+	    			<a href="javascript:void(0);" style="font-size:14px;" onclick="myFunction()">☰</a>
+	 		  </td>
 
 
-   <div class="navbar ">
-      <div class="nav">
-         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg"><br/>
-            Massage
-         </div>
-      </div>
-   </div>
+			</tr>
+		</table>
 
- <div class="container" id="container">
- 	<br/><br/>
 
- 	<select class="dropdown" nAMe="service_select" ng-model="service_Select">
+	</div>
+
+	</div>
+
+
+	<div class="container content">
+
+		<div class="col-lg-9  col-md-9 col-sm-9 col-xs-12 col-lg-offset-3 col-xs-offset-0 col-md-offset-3 col-sm-offset-3">
+
+		<div class="steps col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<table width="100%">
+				<tr class="steps-row">
+					<td width="25%">
+						<img src="./images/1-off.png" class="img-responsive">
+						<span class="steps-info">Customize Massage</span>
+					</td>
+					<td>
+						<img src="./images/2-on.png" class="img-responsive">
+						<span class="steps-info">Choose date</span>
+					</td>
+					<td>
+						<img src="./images/3-on.png" class="img-responsive">
+						<span class="steps-info">Contact Info</span>
+					</td>
+					<td>
+						<img src="./images/4-on.png" class="img-responsive">
+						<span class="steps-info">Summary</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="heading">
+				CUSTOMIZE MASSAGE
+		</div>
+
+		<div class="form">
+
+			<label for="select">Choose type of massage</label><br/>
+			<select  name="select" ng-model="service_Select">
      			 <option value="personal_training">Personal Training</option>
       			<option value="sports_massage">Sports Message</option>
       			<option value="aurvedic_massage">Aurvedic Message</option>
       			<option value="pilates">Pilates</option>
-   			 </select>
+   			 </select><br/>
 
-   			 
-   			  <br/>
-   			  <div class="content col-lg-12 col-md-12 col-sm-12  col-xs-12">
-   			  	
-   			  	<div class="image col-lg-12 col-md-12 col-sm-12  col-xs-12">
-   			  		<img class="img-responsive" ng-src={{image}}>
-   			  	</div><br/>
+			<div class="description">
 
-   			  	<div class="description">
-   			  		<p>
-   			  			{{description}}
-   			  		</p>
-   			  	</div>	
+				<img class="img-responsive" ng-src={{image}}><br/>
+				<p>
+					{{description}}
+				</p>
 
-   			  </div>
-              </div>
+			</div>
 
-              <div class="container">
+			<label for="preferences">Preferences:</label><br/>
+			<textarea ng-model="instructions" placeholder="Please enter your special instructions..."></textarea><br/>
 
-              <div class="prefrences">
-                 <div class="pref_heading"><br/><br/>
-                    Prefrences:
-                 </div>
-
-                 Special Instructions:<br/>
-               <textarea ng-model="instructions">
-                  
-               </textarea>
-
+			<div ng-if="error">
+                <span style="color: red;">{{error_message}}</span>
               </div><br/>
 
-              <a href="/date-select"> <button type="button" class="btn btn-success" ng-click="select(instructions)">Proceed!</button><br></a>
-   			 </div>
- 	    
+			<div class="button" ng-click="select(instructions,service_Select)">
+					CONTINUE
+			</div>
+
+		</div>
+
+		</div>
+
+	</div>
+	
+</body>
+</html>
+

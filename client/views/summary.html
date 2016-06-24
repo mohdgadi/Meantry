@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maalish</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+</head>
+<body>
+
+	<div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 logo">
+		<img src="images/maalish-logo.png" class="img-responsive">
+	</div>
+
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+		<table width="100%">
+			<tr class="topnav">
+			  <td width="14.2%"><a class="active" href="#home">Get a Massage</a></td>
+			  <td width="14.2%"><a href="#news">How It Works</a></td>
+			  <td width="14.2%"><a href="#contact">Membership</a></td>
+	   		  <td width="14.2%"><a href="#contact">Signin</a></td>
+	   		  <td width="14.2%"><a href="#contact">Faq</a></td>
+	     	  <td width="14.2%"><a href="#contact">Contact</a></td>
+	 
+	  		  <td width=14.2% class="icon">
+	    			<a href="javascript:void(0);" style="font-size:14px;" onclick="myFunction()">☰</a>
+	 		  </td>
+
+
+			</tr>
+		</table>
+
+
+	</div>
+
+	</div>
+
+
+	<div class="container content">
+
+		<div class="col-lg-9  col-md-9 col-sm-9 col-xs-12 col-lg-offset-3 col-xs-offset-0 col-md-offset-3 col-sm-offset-3">
+
+		<div class="steps col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<table width="100%">
+				<tr class="steps-row">
+					<td width="25%">
+						<img src="images/1-off.png" class="img-responsive">
+						<span class="steps-info">Customize Massage</span>
+					</td>
+					<td>
+						<img src="images/2-off.png" class="img-responsive">
+						<span class="steps-info">Choose date</span>
+					</td>
+					<td>
+						<img src="images/3-off.png" class="img-responsive">
+						<span class="steps-info">Contact Info</span>
+					</td>
+					<td>
+						<img src="images/4-off.png" class="img-responsive">
+						<span class="steps-info">Summary</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="heading">
+				CHECK YOUR DETAILS
+		</div>
+
+		<div class="form">
+
+			<label for="name">Name</label><br/>
+			<input type="text" name="name" ng-model="name" readonly><br/>
+
+			<label for="email">Email</label><br/>
+			<input type="text" name="email" ng-model="email" readonly><br/>
+
+			<label for="phone">Phone</label><br/>
+			<input type="number" name="phone" ng-model="phone" readonly><br/>
+
+			<label for="address">Address*</label><br/>
+			<textarea placeholder="Address" readonly>{{address}}</textarea><br/>
+
+
+			<label for="massage">Massage</label><br/>
+			<input type="text" name="massage" ng-model="service" readonly><br/>
+
+			<label for="date">Date & Time</label><br/>
+			<input type="text" name="date" value="{{date}} at {{time}}:00" readonly><br/>
+
+			<label for="duration">Duration</label><br/>
+			<input type="text" name="duration" value="{{duration}} Mins" readonly><br/>
+			
+
+			<a class="checkout" href="/checkout"><div class="button">
+					CHECKOUT
+			</div></a>
+		</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

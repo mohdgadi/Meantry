@@ -1,78 +1,133 @@
-<div class="container" >
-	<link rel="stylesheet" href="./stylesheets/user-info.css">
-
-	<div class="navbar ">
-      <div class="nav">
-         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-            <table width="80%">
-
-              <tr>
-                <td width="33%">
-                  <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg">
-                </td>
-                <td width="33%">
-                  <img class="img-responsive" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-128.png">
-                </td>
-                
-              </tr>
-
-              <tr >
-                <td>{{service}}</td>
-                <td>Time:{{times}},Date:{{dates}}</td>
-                
-                
-              </tr>
-            </table>
-         </div>
-      </div>
-      </div>
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maalish-Info</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<br/>
-	<div id="content" class="container">
-		<div ng-if="session">
+</head>
+<body>
 
-			<div ng-if="predefined_address">
-			
-			   Here is your given address:<br/>
-			   {{defined_address}}<br/>
+	<div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
 
-			   <button class="btn btn-danger" ng-click="show_change_address()">Change Address</button><br/>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 logo">
+		<img src="images/maalish-logo.png" class="img-responsive">
+	</div>
 
-			 </div>
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 
-			<div ng-if="address_change">
-			   		Address: <input type="text" ng-model="address" name="address"><br>
-			   		<button class="btn btn-danger" ng-click="change_successful(address)">Change Address</button><br/>
-			   		
-			</div>
-
-			<div ng-if="submit_button">
-				<a href="/checkout"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
-			</div>
-	   </div>
+		<table width="100%">
+			<tr class="topnav">
+			  <td width="14.2%"><a class="active" href="#home">Get a Massage</a></td>
+			  <td width="14.2%"><a href="#news">How It Works</a></td>
+			  <td width="14.2%"><a href="#contact">Membership</a></td>
+	   		  <td width="14.2%"><a href="#contact">Signin</a></td>
+	   		  <td width="14.2%"><a href="#contact">Faq</a></td>
+	     	  <td width="14.2%"><a href="#contact">Contact</a></td>
 	 
-
-	
-		<div ng-if="!session">
-			<div class="heading">
-				Please Enter Your Information
-			</div>
-			Name: <input type="text" ng-model="name" name="name" required><br>
-			Email: <input type="email" ng-model="email" name="email"><br>
-			Phone: <input type="text" ng-model="phone" name="phone"><br>
-			Address:<input type="text" ng-model="address" name="address">
-
-			<div>
-				<a href="/checkout"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
-			</div>
-		
-		</div>
+	  		  <td width=14.2% class="icon">
+	    			<a href="javascript:void(0);" style="font-size:14px;" onclick="myFunction()">☰</a>
+	 		  </td>
 
 
-		<br/>
-
-	
+			</tr>
+		</table>
 
 
 	</div>
+
+	</div>
+
+
+	<div class="container content">
+
+		<div class="col-lg-9  col-md-9 col-sm-9 col-xs-12 col-lg-offset-3 col-xs-offset-0 col-md-offset-3 col-sm-offset-3">
+
+		<div class="steps col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<table width="100%">
+				<tr class="steps-row">
+					<td width="25%">
+						<img src="images/1-off.png" class="img-responsive">
+						<span class="steps-info">Customize Massage</span>
+					</td>
+					<td>
+						<img src="images/2-off.png" class="img-responsive">
+						<span class="steps-info">Choose date</span>
+					</td>
+					<td>
+						<img src="images/3-off.png" class="img-responsive">
+						<span class="steps-info">Contact Info</span>
+					</td>
+					<td>
+						<img src="images/4-on.png" class="img-responsive">
+						<span class="steps-info">Summary</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="heading">
+				ENTER YOUR INFO
+		</div>
+
+		<div class="form" ng-if="session">
+
+			<div ng-if="predefined_address">
+
+				<label for="address">Your Pre-defined Address:</label><br/>
+				<textarea ng-model="defined_address" readonly></textarea><br/>
+
+				<div ng-click="show_change_address()" class="change-address">Change Address</div><br/>
+
+			</div>
+
+			<div ng-if="address_change">
+					<label for="address">Your Other Address:</label><br/>
+			   		<textarea ng-model="address" name="address"></textarea><br>
+
+			   		<div class="button" ng-click="change_successful(address)">Change</div><br/>
+			   		
+			</div>
+
+			<div ng-if="error">
+                <span style="color: red;">{{error_message}}</span>
+              </div><br/>
+
+			<div class="button" ng-if="submit_button" ng-click="submit2()">
+				CONTINUE
+			</div>
+
+		</div>
+
+
+
+		<div class="form" ng-if="!session">
+
+			<label for="name">Name*</label><br/>
+			<input type="text" name="name" placeholder="Name" ng-model="name"><br/>
+
+			<label for="email">Email*</label><br/>
+			<input type="text" name="email" placeholder="Email" ng-model="email"><br/>
+
+			<label for="phone">Phone*</label><br/>
+			<input type="number" name="phone" placeholder="Phone" ng-model="phone"><br/>
+
+			<label for="address">Address*</label><br/>
+			<textarea placeholder="Address" ng-model="address"></textarea><br/>
+			
+			
+			<div ng-if="error">
+                <span style="color: red;">{{error_message}}</span>
+              </div><br/>
+
+			<div class="button" ng-click="submit(name,email,phone,address)">
+					CONTINUE
+			</div>
+		</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

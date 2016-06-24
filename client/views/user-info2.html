@@ -1,0 +1,78 @@
+<div class="container" >
+	<link rel="stylesheet" href="./stylesheets/user-info.css">
+
+	<div class="navbar ">
+      <div class="nav">
+         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <table width="80%">
+
+              <tr>
+                <td width="33%">
+                  <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg">
+                </td>
+                <td width="33%">
+                  <img class="img-responsive" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-128.png">
+                </td>
+                
+              </tr>
+
+              <tr >
+                <td>{{service}}</td>
+                <td>Time:{{times}},Date:{{dates}}</td>
+                
+                
+              </tr>
+            </table>
+         </div>
+      </div>
+      </div>
+
+	
+	<br/>
+	<div id="content" class="container">
+		<div ng-if="session">
+
+			<div ng-if="predefined_address">
+			
+			   Here is your given address:<br/>
+			   {{defined_address}}<br/>
+
+			   <button class="btn btn-danger" ng-click="show_change_address()">Change Address</button><br/>
+
+			 </div>
+
+			<div ng-if="address_change">
+			   		Address: <input type="text" ng-model="address" name="address"><br>
+			   		<button class="btn btn-danger" ng-click="change_successful(address)">Change Address</button><br/>
+			   		
+			</div>
+
+			<div ng-if="submit_button">
+				<a href="/checkout"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
+			</div>
+	   </div>
+	 
+
+	
+		<div ng-if="!session">
+			<div class="heading">
+				Please Enter Your Information
+			</div>
+			Name: <input type="text" ng-model="name" name="name" required><br>
+			Email: <input type="email" ng-model="email" name="email"><br>
+			Phone: <input type="text" ng-model="phone" name="phone"><br>
+			Address:<input type="text" ng-model="address" name="address">
+
+			<div>
+				<a href="/checkout"><input type="submit" ng-click="submit(name,email,phone,address)"/></a>
+			</div>
+		
+		</div>
+
+
+		<br/>
+
+	
+
+
+	</div>

@@ -1,0 +1,65 @@
+.content{
+	margin-top: 150px;
+	margin-bottom: 100px;
+	color: #686866;
+}
+
+.heading{
+	font-size: 1.8em;
+	font-weight: 600;
+}
+.form{
+	margin-top: 10px;
+
+}
+label{
+	margin-bottom: 10px;
+	margin-top: 30px;
+	font-size: 1.1em;
+}
+select{
+	width: 100%;
+	max-width: 400px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 15px;
+	border:1px solid #686866;
+	border-radius: 5px;
+	font-size: 1.3em;
+}
+
+input{
+	width: 100%;
+	max-width: 400px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border:1px solid #686866;
+	border-radius: 5px;
+}
+.button{
+	width: 100%;
+	max-width: 400px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	text-align: center;
+	background-color: #D5CC4E;
+	border-radius: 5px;
+	color: white;
+	font-size: 1.2em;
+	margin-top: 20px;
+}
+tr.steps-row img{
+	max-width: 40px;
+	float: left;
+
+}
+.steps{
+	margin-bottom: 80px;
+}
+.steps-info{
+	font-size: 1.1em;
+	margin-left: 5px;
+	text-align: center;
+
+}

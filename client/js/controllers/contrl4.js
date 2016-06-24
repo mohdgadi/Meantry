@@ -1,10 +1,11 @@
-myapp.controller('contrl4', ['$scope' ,'$localStorage','$http', 
-  function ($scope,  $localStorage,$http) {
+myapp.controller('contrl4', ['$scope' ,'$localStorage','$http','$location',
+  function ($scope,  $localStorage,$http,$location) {
 
 
     $scope.service=$localStorage.service;
     $scope.times=$localStorage.time;
     $scope.dates=$localStorage.date;
+    $scope.error=false;
     
 
 
@@ -19,10 +20,7 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
             $scope.predefined_address=true;
              $scope.defined_address=response.address;
 
-               $scope.submit=function(){
-            $localStorage.address=$scope.defined_address;
-            console.log("saved");
-          };
+
 
              $scope.session=true;
 
@@ -30,6 +28,7 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
           $scope.predefined_address=false;
           $scope.address_change=true;
           $scope.submit_button=false;
+          $scope.error=false;
         };
 
         $scope.change_successful=function(address){
@@ -62,12 +61,38 @@ myapp.controller('contrl4', ['$scope' ,'$localStorage','$http',
 
                     $scope.submit=function(name,email,phone,address){
                       console.log("clicked");
-            $localStorage.name=name;
-            $localStorage.email=email;
-            $localStorage.phone=phone;
-            $localStorage.address=address;
-          };
+                      if(name && name!=='' && email && email!=='' && phone && phone!=='' && address && address!==''){
+                      $localStorage.name=name;
+                      $localStorage.email=email;
+                      $localStorage.phone=phone;
+                      $localStorage.address=address;
+                       $location.path('/summary') ;
+                    
+                  }else{
+                      $scope.error_message="Please input all the fields";
+                      $scope.error=true;
+                  }
+                };
         });
+
+
+
+        $scope.submit2=function(){
+                if($scope.defined_address && $scope.defined_address!==''){
+                    console.log($scope.defined_address);
+                    $localStorage.address=$scope.defined_address;
+                    console.log("saved");
+
+                     $location.path('/summary') ;
+
+
+
+          }else{
+            $scope.error_message="Please enter a valid address";
+            $scope.error=true;
+            
+          }
+          };
 
 
 

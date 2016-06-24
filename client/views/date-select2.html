@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+      
+      <link rel="stylesheet" href="./stylesheets/date_select.css">
+       <link rel="stylesheet" type="text/css" href="./stylesheets/angular-pickadate.css" />
+
+
+        <div class="navbar ">
+      <div class="nav">
+         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <table>
+
+              <tr>
+                <td width="50%">
+                  <img class="img-responsive" src="http://worldartsme.com/images/massage-hands-silhouette-clipart-1.jpg">
+                </td>
+                <td>
+                  
+                </td>
+              </tr>
+
+              <tr width="50%">
+                <td>{{service}}</td>
+              </tr>
+            </table>
+         </div>
+      </div>
+      </div>
+   
+
+
+
+        <div class="container">
+      	<label for="singleSelect"><h3>Please Select a Date </h3></label><br>
+    		
+
+         <div class="calender"  pickadate  ng-model="date"  select-other-months="next" no-extra-rows  min-date="minDate" max-date="maxDate" ng-model="date"  format="dd/mm/yyyy"  >
+    <div class="selected-date">
+        Selected date is {{date || '(no date selected)'}}
+      </div><br/>
+    
+    </div>    <br/><br/>
+
+     <label for="durationSelect"> Select Massage Duration</label><br>
+     <select class="dropdown" ng-model="duration" name="durationSelect">
+          <option value="60">60 Mins</option>
+            <option value="90">90 Mins</option>
+            <option value="120">120 Mins</option>
+     </select><br/><br/>
+
+
+      	<label for="singleSelect"> Select time Time Slot To start massage</label><br>
+    		<select class="dropdown" nAMe="singleSelect" ng-model="timeSelect">
+     			 <option value="9/10">9AM-10AM</option>
+      			<option value="10/11">10AM-11AM</option>
+      			<option value="11/12">11AM-12PM</option>
+      			<option value="12/13">12PM-1PM</option>
+      			<option value="13/14">1PM-2PM</option>
+
+   			 </select><br/><br/>
+   			 <a href="/user_info"><button class="btn btn-success" ng-click="check(duration)">Proceed!</button><br></a>
+   			 Selected Time = {{timeSelect}}
+   			 <br/><br/>
+   			<br/>
+   			 <br/>
+   			 
+
+   			 
+
+      
+      </div>
+
+      
+

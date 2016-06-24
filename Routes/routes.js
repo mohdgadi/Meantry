@@ -174,9 +174,8 @@ router.post('/api/successful',function(req,res){
 });
 
 router.post('/payment-success',payment_controller.payment_success);
-router.post('/payment-failure',function(req,res){
-	console.log("Got failure request");
-});
+
+router.post('/payment-failure',payment_controller.payment_failure);
 
 
 router.get('*', function (req, res) {

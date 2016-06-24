@@ -1,0 +1,44 @@
+.content{
+	margin-top: 200px;
+	margin-bottom: 100px;
+	color: #686866;
+}
+.heading{
+	font-size: 1.8em;
+	font-weight: 600;
+}
+.form{
+	margin-top: 10px;
+
+}
+label{
+	margin-bottom: 10px;
+	margin-top: 30px;
+	font-size: 0.9em;
+}
+input{
+	width: 100%;
+	max-width: 400px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border:1px solid #686866;
+	border-radius: 5px;
+}
+.forgot{
+	margin-top: 50px;
+	color: #686866;
+	text-decoration: underline;;
+}
+.button{
+	width: 100%;
+	max-width: 400px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	text-align: center;
+	background-color: #f50505;
+	border-radius: 5px;
+	color: white;
+	font-size: 1.2em;
+	margin-top: 20px;
+}

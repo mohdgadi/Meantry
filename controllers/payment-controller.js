@@ -219,3 +219,12 @@ module.exports.payment_success = function (req,res) {
 
 
 };
+
+
+module.exports.payment_failure = function (req,res) {
+
+	res.render('../client/views/payment-failure',{
+		id:req.body.mihpayid,service:info,date:udf4,time:udf1,duration:udf2
+	});
+
+};
